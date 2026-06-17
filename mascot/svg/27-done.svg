@@ -1,0 +1,30 @@
+<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Done">
+  <defs>
+    <linearGradient id="bd_27done" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient>
+    <linearGradient id="fc_27done" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient>
+    <linearGradient id="lf_27done" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient>
+  </defs>
+  <ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/>
+  
+  <g transform="">
+    <path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)">
+  <path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_27done)"/>
+  <path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_27done)"/>
+  <path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/>
+  <path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g>
+    <rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_27done)"/>
+    <ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/>
+    <ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/>
+    <rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_27done)"/>
+    <ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/>
+    <ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/>
+    
+    <path d="M83 133 q9 -9 18 0" stroke="#a32a7d" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M139 133 q9 -9 18 0" stroke="#a32a7d" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M110 153 q10 9 20 0" stroke="#7a1e5c" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+    
+    <path d="M54 150 L96 184" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="96" cy="184" r="9" fill="#118a58"/><path d="M186 150 L144 184" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="144" cy="184" r="9" fill="#118a58"/>
+  </g>
+  <g transform="translate(120 182)"><circle r="19" fill="#1e9e6a" stroke="#fff" stroke-width="3"/><path d="M-9 1 l6 7 l12 -14" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M150 144.4 L151.6 148.4 L155.6 150 L151.6 151.6 L150 155.6 L148.4 151.6 L144.4 150 L148.4 148.4 Z" fill="#1e9e6a"/>
+</svg>

@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rangkai — teman siapin diri buat rekrutmen impianmu</title>
+<meta name="description" content="Belajar terstruktur buat rekrutmen BUMN, Bank Indonesia, OJK, LPS, dan bank BUMN. Ditemani AI tutor, latihan soal, try out interview, sampai cek CV — pelan-pelan sampai hari seleksi." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+/* ─────────────────────────────  TOKENS  ───────────────────────────── */
+:root{
+  --rimba:#0e5c43; --daun:#1e9e6a; --daun-2:#2bbd83; --daun-soft:#5bbf8e;
+  --madu:#f2c14e; --madu-deep:#e0a93b; --pucuk:#cde8d8; --tanah:#db7b58;
+  --krem:#faf6ee; --krem-2:#f4ecdd; --pinus:#10201a; --pinus-2:#16312600;
+  --ink:#13271f; --muted:#5f7167; --line:#e6ddcb;
+  --eye:#a32a7d; --blush:#f0a6c2; --langit:#5b8fd6;
+  --font-sans:"Plus Jakarta Sans",system-ui,sans-serif;
+  --font-display:"Space Grotesk",var(--font-sans);
+  --font-mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1160px;
+  --shadow-soft:0 18px 50px -22px rgba(14,92,67,.45);
+  --shadow-card:0 12px 34px -16px rgba(20,40,30,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans); color:var(--ink); background:var(--krem);
+  -webkit-font-smoothing:antialiased; overflow-x:clip; line-height:1.55;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3,.display{font-family:var(--font-display);letter-spacing:-.02em;line-height:1.05}
+.mono{font-family:var(--font-mono)}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--daun);font-weight:700}
+
+/* ─────────────────────────────  BUTTONS  ─────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-sans);font-weight:700;
+  font-size:15px;padding:14px 24px;border-radius:999px;border:0;cursor:pointer;transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,background .25s;white-space:nowrap}
+.btn-primary{background:var(--rimba);color:#fff;box-shadow:0 12px 26px -10px rgba(14,92,67,.7)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px -10px rgba(14,92,67,.8);background:#0c6f4f}
+.btn-ghost{background:#fff;color:var(--rimba);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ghost:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1.5px var(--daun),0 12px 24px -14px rgba(20,40,30,.4)}
+.btn-gold{background:var(--madu);color:#3a2c06;box-shadow:0 12px 26px -10px rgba(224,169,59,.8)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 32px -10px rgba(224,169,59,.9)}
+
+/* ─────────────────────────────  NAV  ─────────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+.nav.scrolled{background:rgba(250,246,238,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:11px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--rimba)}
+.brand svg{width:34px;height:34px;flex:none}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:600;color:#3c4a43}
+.nav-links a{position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--daun);border-radius:2px;transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang{display:inline-flex;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:3px;font-family:var(--font-mono);font-size:12px;font-weight:700}
+.lang button{border:0;background:transparent;color:var(--muted);padding:5px 11px;border-radius:999px;cursor:pointer;transition:.2s;line-height:1}
+.lang button.on{background:var(--rimba);color:#fff}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ─────────────────────────────  HERO  ────────────────────────────── */
+.hero{padding:148px 0 90px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:40px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);
+  padding:7px 14px 7px 8px;border-radius:999px;font-size:13px;font-weight:700;color:var(--rimba);box-shadow:var(--shadow-card)}
+.badge .dot{width:9px;height:9px;border-radius:50%;background:var(--daun);box-shadow:0 0 0 4px rgba(30,158,106,.18)}
+.hero h1{font-size:clamp(38px,5.6vw,66px);font-weight:700;margin:22px 0 0}
+.hero h1 .leaf-word{position:relative;color:var(--rimba);white-space:nowrap}
+.hero h1 .leaf-word::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.28em;background:var(--madu);opacity:.5;border-radius:4px;z-index:-1;transform:scaleX(0);transform-origin:left;animation:underline 1s .7s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes underline{to{transform:scaleX(1)}}
+.hero p.lead{font-size:clamp(16px,1.5vw,19px);color:#3f4d46;max-width:540px;margin:22px 0 30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{margin-top:18px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.hero-note b{color:var(--rimba)}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:440px}
+.blob{position:absolute;border-radius:50%;filter:blur(46px);z-index:0;pointer-events:none}
+.blob.a{width:340px;height:340px;background:rgba(43,189,131,.35);top:6%;left:8%;animation:blobMove 11s ease-in-out infinite}
+.blob.b{width:260px;height:260px;background:rgba(242,193,78,.4);bottom:6%;right:6%;animation:blobMove 13s ease-in-out infinite reverse}
+.blob.c{width:200px;height:200px;background:rgba(219,123,88,.28);top:42%;right:30%;animation:blobMove 9s ease-in-out infinite}
+@keyframes blobMove{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(26px,-22px) scale(1.08)}66%{transform:translate(-18px,16px) scale(.95)}}
+.mascot-stage{position:relative;z-index:2;width:min(420px,82%);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mascot-stage svg{width:100%;height:auto;overflow:visible}
+/* floating chips around mascot */
+.chip{position:absolute;z-index:3;background:#fff;border-radius:16px;padding:9px 13px;display:flex;align-items:center;gap:9px;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-soft);border:1px solid rgba(255,255,255,.7)}
+.chip .ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-size:16px}
+.chip small{display:block;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.chip .mono{font-size:15px}
+.chip.xp{top:8%;left:-2%;animation:bob 4.5s ease-in-out infinite}
+.chip.streak{top:40%;right:-6%;animation:bob 5.3s ease-in-out .6s infinite}
+.chip.level{bottom:9%;left:4%;animation:bob 4.9s ease-in-out .3s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.scroll-cue{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.scroll-cue .mouse{width:22px;height:34px;border:2px solid var(--muted);border-radius:12px;position:relative}
+.scroll-cue .mouse::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:4px;height:6px;background:var(--muted);border-radius:3px;animation:wheel 1.6s infinite}
+@keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,11px)}}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero p.lead{margin-left:auto;margin-right:auto}.hero-cta{justify-content:center}.hero-note{justify-content:center}.hero-visual{min-height:380px;order:-1}}
+
+/* ─────────────────────────────  MARQUEE  ─────────────────────────── */
+.marquee-sec{padding:30px 0 8px}
+.marquee-label{text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);margin-bottom:16px}
+.marquee{position:relative;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee-track{display:flex;gap:14px;width:max-content;animation:scrollX 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+.org{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 18px;font-weight:700;font-size:15px;color:#2c3a33;white-space:nowrap;box-shadow:var(--shadow-card)}
+.org .glyph{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:16px;background:var(--pucuk)}
+
+/* ─────────────────────────────  SECTION HEADERS  ─────────────────── */
+.sec-head{text-align:center;max-width:680px;margin:0 auto 52px}
+.sec-head h2{font-size:clamp(28px,3.6vw,44px);font-weight:700;margin:14px 0 0}
+.sec-head p{color:var(--muted);font-size:17px;margin-top:14px}
+.pad{padding:96px 0}
+
+/* ─────────────────────────────  REVEAL  ─────────────────────────── */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}.reveal[data-d="4"]{transition-delay:.32s}.reveal[data-d="5"]{transition-delay:.4s}
+
+/* ─────────────────────────────  PROBLEM  ─────────────────────────── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+.cpanel{border-radius:28px;padding:34px 30px 30px;position:relative;overflow:hidden}
+.cpanel.before{background:#eef0ee;border:1.5px solid #e0e3df}
+.cpanel.after{background:linear-gradient(165deg,#0f5e44,#0a3f2e);color:#eafff4;box-shadow:var(--shadow-soft)}
+.cpanel h3{font-size:23px;margin-bottom:6px}
+.cpanel .tag{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.cpanel.before .tag{color:#9aa39d}.cpanel.after .tag{color:var(--madu)}
+.cpanel ul{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:13px}
+.cpanel li{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:500}
+.cpanel.before li{color:#6c756f}
+.cmark{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;margin-top:1px}
+.before .cmark{background:#dfe3df;color:#97a09a}
+.after .cmark{background:rgba(242,193,78,.22);color:var(--madu)}
+.cpanel .mini-mascot{position:absolute;right:14px;bottom:-6px;width:104px;opacity:.96}
+.cpanel .mini-mascot svg{width:100%;height:auto;display:block}
+.cpanel.before .mini-mascot{filter:grayscale(.55) opacity(.85)}
+@media(max-width:760px){.compare{grid-template-columns:1fr}}
+
+/* ─────────────────────────────  JOURNEY (signature)  ─────────────── */
+.journey{background:var(--pinus);color:#eafff3;padding:0;overflow:clip;transition:background 1s ease}
+.journey.s0{background:#0a1813}.journey.s1{background:#102a1f}.journey.s2{background:#16402d}.journey.s3{background:#1d5a3c}
+.journey .wrap{position:relative}
+.journey-head{text-align:center;padding:88px 0 8px}
+.journey-head h2{font-size:clamp(28px,3.6vw,44px);color:#fff}
+.journey-head p{color:#a9c6b8;margin-top:12px;font-size:17px}
+.journey-body{display:grid;grid-template-columns:.92fr 1.08fr;gap:40px;align-items:flex-start;padding-bottom:40px}
+.journey-stage{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.journey-follow{display:flex;flex-direction:column;align-items:center;gap:22px;will-change:transform;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.journey-mascot{width:min(340px,78%);transition:transform .5s}
+.journey-mascot svg{width:100%;height:auto;overflow:visible}
+.growth-meter{width:230px;max-width:70%}
+.growth-track{height:9px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden}
+.growth-fill{height:100%;width:8%;background:linear-gradient(90deg,var(--daun-soft),var(--madu));border-radius:99px;transition:width .6s cubic-bezier(.22,1,.36,1)}
+.growth-label{margin-top:11px;text-align:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--madu);font-weight:700;text-transform:uppercase}
+.steps{display:flex;flex-direction:column}
+.step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:30px 0}
+.step .num{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--daun-soft);letter-spacing:.16em}
+.step h3{font-size:clamp(24px,3vw,34px);color:#fff;margin:10px 0 12px;transition:.4s}
+.step p{color:#b6d2c4;font-size:16.5px;max-width:430px}
+.step .feat-row{margin-top:18px;display:flex;flex-wrap:wrap;gap:9px}
+.step .feat-row span{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:99px;font-size:13px;font-weight:600;color:#d7ece1}
+.step{opacity:.32;transition:opacity .45s,transform .45s}
+.step.active{opacity:1}
+.step.active h3{color:var(--madu)}
+@media(max-width:880px){.journey-body{grid-template-columns:1fr;gap:0}.journey-stage{position:sticky;height:auto;padding:24px 0 18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.001));top:64px;z-index:5}.journey-mascot{width:190px}.step{min-height:62vh}.growth-meter{width:200px}}
+
+/* ─────────────────────────────  FEATURES  ────────────────────────── */
+.features{background:linear-gradient(180deg,var(--krem),#fff)}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.fcard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px 26px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s}
+.fcard:hover{transform:translateY(-7px);box-shadow:var(--shadow-soft);border-color:transparent}
+.fcard::before{content:"";position:absolute;inset:0;background:radial-gradient(120px 90px at 88% 0%,var(--glow,rgba(30,158,106,.14)),transparent 70%);opacity:0;transition:opacity .3s}
+.fcard:hover::before{opacity:1}
+.fic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:26px;margin-bottom:18px;position:relative;transition:transform .3s}
+.fcard:hover .fic{transform:rotate(-8deg) scale(1.08)}
+.fic-mascot{overflow:visible}
+.fic-mascot svg{width:132%;height:132%;margin:-16%;display:block}
+.fcard h3{font-size:20px;margin-bottom:9px}
+.fcard p{color:var(--muted);font-size:14.5px}
+.fcard .quote{margin-top:14px;font-size:13px;font-style:italic;color:#3f6e58;background:var(--pucuk);padding:10px 13px;border-radius:12px;border-left:3px solid var(--daun)}
+.ftag{position:absolute;top:18px;right:18px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:4px 9px;border-radius:99px;background:rgba(242,193,78,.2);color:var(--madu-deep)}
+@media(max-width:880px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
+
+/* ─────────────────────────────  GAMIFY  ──────────────────────────── */
+.gamify{background:var(--pinus);color:#eafff3}
+.gamify .sec-head h2{color:#fff}.gamify .sec-head p{color:#a9c6b8}
+.gam-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gam-card{background:#16302356;border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:26px}
+.gam-stat{display:flex;gap:20px;flex-wrap:wrap}
+.stat-box{flex:1;min-width:130px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}
+.stat-box .v{font-family:var(--font-mono);font-size:34px;font-weight:700;color:var(--madu);line-height:1}
+.stat-box .l{font-size:13px;color:#a9c6b8;margin-top:7px;font-weight:600}
+.stat-box.flame .v{color:var(--tanah)}
+.lead-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.lead-row:last-child{border-bottom:0}
+.lead-rank{width:26px;font-family:var(--font-mono);font-weight:700;color:#8fae9f;font-size:14px}
+.lead-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#0a1813;flex:none}
+.lead-name{flex:1;font-weight:700;font-size:15px}
+.lead-name small{display:block;font-weight:500;color:#8fae9f;font-size:12px}
+.lead-xp{font-family:var(--font-mono);font-weight:700;color:var(--madu);font-size:14px}
+.lead-row.me{background:rgba(242,193,78,.08);margin:0 -14px;padding:11px 14px;border-radius:12px;border-bottom:0}
+.qtitle{font-weight:700;font-size:16px;margin-bottom:4px;color:#fff}
+.qsub{font-size:13px;color:#a9c6b8;margin-bottom:16px}
+.quest{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.quest:last-child{border-bottom:0}
+.qbox{width:26px;height:26px;border-radius:8px;border:2px solid rgba(255,255,255,.25);flex:none;display:grid;place-items:center;transition:.3s;color:transparent;font-weight:800;font-size:14px}
+.quest.done .qbox{background:var(--daun);border-color:var(--daun);color:#06150f}
+.quest .qn{flex:1;font-size:14.5px;font-weight:600}
+.quest.done .qn{color:#8fae9f;text-decoration:line-through}
+.quest .qxp{font-family:var(--font-mono);font-size:12px;color:var(--madu);font-weight:700}
+.qbar{height:7px;background:rgba(255,255,255,.1);border-radius:99px;margin-top:16px;overflow:hidden}
+.qbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--daun),var(--madu));border-radius:99px;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+@media(max-width:780px){.gam-grid{grid-template-columns:1fr}}
+
+/* ─────────────────────────────  PRICING  ─────────────────────────── */
+.pricing{background:linear-gradient(180deg,#fff,var(--krem))}
+.cycle{display:inline-flex;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:4px;margin:0 auto 16px;gap:2px}
+.cycle button{border:0;background:transparent;font-family:var(--font-sans);font-weight:700;font-size:13.5px;color:var(--muted);padding:9px 18px;border-radius:999px;cursor:pointer;transition:.25s;position:relative}
+.cycle button.on{background:var(--rimba);color:#fff}
+.cycle button .save{font-family:var(--font-mono);font-size:9px;background:var(--madu);color:#3a2c06;padding:2px 6px;border-radius:99px;margin-left:6px;font-weight:700}
+.plans{display:grid;grid-template-columns:1fr 1.12fr;gap:24px;max-width:840px;margin:28px auto 0;align-items:stretch}
+.plan{background:#fff;border:1.5px solid var(--line);border-radius:26px;padding:32px 30px;display:flex;flex-direction:column}
+.plan.pro{border:2px solid var(--daun);box-shadow:var(--shadow-soft);position:relative;background:linear-gradient(180deg,#fff,#f6fbf7)}
+.plan .pname{font-family:var(--font-display);font-weight:700;font-size:21px;display:flex;align-items:center;gap:9px}
+.plan .pdesc{color:var(--muted);font-size:14px;margin:6px 0 18px}
+.price{display:flex;align-items:flex-end;gap:4px;margin-bottom:4px}
+.price .cur{font-weight:700;font-size:18px;color:var(--ink);margin-bottom:7px}
+.price .amt{font-family:var(--font-mono);font-weight:700;font-size:46px;line-height:1;color:var(--rimba)}
+.price .per{color:var(--muted);font-size:13px;margin-bottom:7px;font-weight:600}
+.billed{font-size:12.5px;color:var(--muted);min-height:18px;margin-bottom:20px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:24px;flex:1}
+.plan li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;font-weight:500}
+.plan li .pk{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;background:var(--pucuk);color:var(--rimba);margin-top:1px}
+.plan li.off{color:#a7afa9}.plan li.off .pk{background:#eef0ee;color:#bcc4be}
+.plan li b{font-weight:700;color:var(--ink)}
+.pop{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--daun),var(--rimba));color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:99px;box-shadow:0 8px 18px -8px rgba(14,92,67,.7);white-space:nowrap}
+@media(max-width:760px){.plans{grid-template-columns:1fr}}
+
+/* ─────────────────────────────  CTA  ─────────────────────────────── */
+.cta{padding:0 0 0;}
+.cta-card{background:linear-gradient(160deg,#0f6048,#0a3a2b);border-radius:36px;padding:64px 40px;text-align:center;position:relative;overflow:hidden;color:#eafff4}
+.cta-card h2{font-size:clamp(30px,4vw,50px);color:#fff;max-width:640px;margin:0 auto}
+.cta-card p{color:#bfe0d0;font-size:18px;margin:18px auto 30px;max-width:480px}
+.cta-mascot{width:160px;margin:0 auto 6px}
+.cta-mascot svg{width:100%;height:auto;overflow:visible}
+.cta-form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.cta-form input{flex:1;min-width:220px;border:0;border-radius:999px;padding:15px 22px;font-family:var(--font-sans);font-size:15px;font-weight:500;outline:none;box-shadow:0 0 0 1.5px rgba(255,255,255,.18) inset;background:rgba(255,255,255,.07);color:#fff}
+.cta-form input::placeholder{color:#9fc4b3}
+.cta-fine{margin-top:16px;font-size:12.5px;color:#8fb6a4}
+.petal{position:absolute;top:-20px;font-size:18px;animation:fall linear infinite;z-index:1;pointer-events:none;opacity:0}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0);opacity:0}10%{opacity:.9}100%{transform:translateY(560px) rotate(360deg);opacity:0}}
+
+/* ─────────────────────────────  FOOTER  ──────────────────────────── */
+footer{background:var(--krem);padding:60px 0 38px;border-top:1px solid var(--line)}
+.foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.foot-brand{max-width:300px}
+.foot-brand p{color:var(--muted);font-size:14px;margin-top:14px}
+.foot-cols{display:flex;gap:56px;flex-wrap:wrap}
+.foot-col h4{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:14px;font-weight:800}
+.foot-col a{display:block;color:#3c4a43;font-size:14.5px;font-weight:600;margin-bottom:10px;transition:.2s}
+.foot-col a:hover{color:var(--daun)}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+
+/* ─────────────────────────────  SCROLL PROGRESS  ─────────────────── */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--daun),var(--madu));z-index:99;transition:width .1s}
+
+/* ─────────────────────────────  MASCOT ANIM  ─────────────────────── */
+.m-body{transform-origin:50% 92%;animation:mbob 4.4s ease-in-out infinite}
+@keyframes mbob{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-9px) scale(1.012,.99)}}
+.m-sprout{transform-origin:50% 100%;animation:msway 5s ease-in-out infinite}
+@keyframes msway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.m-arm-can{transform-origin:80% 30%;animation:mwater 6s ease-in-out infinite}
+@keyframes mwater{0%,72%,100%{transform:rotate(0)}80%,90%{transform:rotate(-15deg)}}
+.m-eyes.blink{animation:mblink 5s infinite}
+@keyframes mblink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.m-eyes{transform-origin:50% 50%}
+.water-drop{animation:wdrop 6s ease-in infinite;opacity:0}
+.water-drop.d2{animation-delay:.2s}.water-drop.d3{animation-delay:.4s}
+@keyframes wdrop{0%,78%{opacity:0;transform:translateY(0)}82%{opacity:1}100%{opacity:0;transform:translateY(40px)}}
+.rain-drop{animation:rdrop 1.4s linear infinite;opacity:0}
+.rain-drop.r2{animation-delay:.45s}.rain-drop.r3{animation-delay:.9s}
+@keyframes rdrop{0%{opacity:0;transform:translateY(-4px)}30%{opacity:.8}100%{opacity:0;transform:translateY(34px)}}
+.m-bloom-flower{transform-origin:50% 100%;animation:bloomPulse 4s ease-in-out infinite}
+@keyframes bloomPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.spark{animation:sparkle 2.4s ease-in-out infinite;transform-origin:center}
+.spark.s2{animation-delay:.5s}.spark.s3{animation-delay:1s}
+@keyframes sparkle{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1.1)}}
+.mascot-stage.poke .m-body{animation:poke .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes poke{0%{transform:translateY(0) scale(1)}30%{transform:translateY(-26px) scale(1.06,.94)}60%{transform:translateY(4px) scale(.96,1.04)}100%{transform:translateY(0) scale(1)}}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.08s!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- ───────────── NAV ───────────── -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="24" r="13" fill="#1e9e6a"/><rect x="12" y="18" width="16" height="13" rx="6.5" fill="#eafaf0"/><rect x="15.5" y="21.5" width="3.6" height="5.4" rx="1.8" fill="#a32a7d"/><rect x="21" y="21.5" width="3.6" height="5.4" rx="1.8" fill="#a32a7d"/><path d="M20 13c-3-1-6 .4-6 .4s.7 3.2 3.2 4.2M20 13c3-1 6 .4 6 .4s-.7 3.2-3.2 4.2M20 18V11" stroke="#0e5c43" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>
+      Rangkai
+    </a>
+    <div class="nav-links">
+      <a href="#journey" data-i18n="nav_how">Cara kerja</a>
+      <a href="#features" data-i18n="nav_features">Fitur</a>
+      <a href="#demos" data-i18n="nav_demos">Demo</a>
+      <a href="#gamify" data-i18n="nav_game">Gamifikasi</a>
+      <a href="#pricing" data-i18n="nav_price">Harga</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang" id="lang">
+        <button data-lang="id" class="on">ID</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#cta" class="btn btn-primary" style="padding:11px 20px;font-size:14px" data-i18n="nav_cta">Mulai gratis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ───────────── HERO ───────────── -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="badge"><span class="dot"></span><span data-i18n="hero_badge">Teman siapin diri buat rekrutmen impianmu</span></span>
+      <h1><span data-i18n="hero_h1a">Tumbuh pelan-pelan,</span><br><span data-i18n="hero_h1b">sampai</span> <span class="leaf-word" data-i18n="hero_h1c">siap hari seleksi.</span></h1>
+      <p class="lead" data-i18n="hero_lead">Belajar terstruktur buat rekrutmen BUMN, Bank Indonesia, OJK, LPS &amp; bank BUMN. Ditemani AI tutor, latihan soal tanpa batas, try out interview, sampai cek CV — semua di satu tempat.</p>
+      <div class="hero-cta">
+        <a href="#cta" class="btn btn-primary"><span data-i18n="hero_cta1">Mulai gratis</span> →</a>
+        <a href="#journey" class="btn btn-ghost" data-i18n="hero_cta2">Lihat cara kerjanya</a>
+      </div>
+      <div class="hero-note"><span>🌱</span><span data-i18n="hero_note">Gratis buat mulai. <b>Tanpa kartu kredit.</b> Ditemani sampai hari-H.</span></div>
+    </div>
+    <div class="hero-visual">
+      <div class="blob a"></div><div class="blob b"></div><div class="blob c"></div>
+      <div class="chip xp"><span class="ic" style="background:rgba(242,193,78,.18)">⚡</span><span><small>XP</small><span class="mono">+50</span></span></div>
+      <div class="chip streak"><span class="ic" style="background:rgba(219,123,88,.16)">🔥</span><span><small data-i18n="chip_streak">Streak</small><span class="mono"><span data-i18n="chip_streak_n">7 hari</span></span></span></div>
+      <div class="chip level"><span class="ic" style="background:rgba(30,158,106,.16)">🌿</span><span><small>Level</small><span class="mono">3</span></span></div>
+      <div class="mascot-stage" id="heroMascot" title="Colek aku!"></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="mouse"></div><span data-i18n="scroll">scroll</span></div>
+</header>
+
+<!-- ───────────── DEMOS (in action) ───────────── -->
+<style>
+.demos{background:linear-gradient(180deg,var(--krem),#fff)}
+.demos .sec-head{margin-bottom:0}
+.feat-big{padding:80px 0;position:relative;overflow:clip}
+.f-ai{background:#fff}.f-reason{background:#fff}
+.f-chart{background:linear-gradient(180deg,#fff,#fcfbf4)}
+.f-ai{--glow:rgba(30,158,106,.24)}.f-chart{--glow:rgba(242,193,78,.32)}.f-reason{--glow:rgba(43,189,131,.22)}
+.feat-grid{display:grid;grid-template-columns:1fr 1.06fr;gap:56px;align-items:center}
+.feat-copy{order:1;max-width:486px}
+.feat-visual{order:2}
+.feat-big.rev .feat-copy{order:2}
+.feat-big.rev .feat-visual{order:1}
+.feat-copy .eyebrow{display:block;margin-bottom:14px}
+.feat-copy h2{font-size:clamp(29px,3.6vw,46px);font-weight:700;line-height:1.04;letter-spacing:-.02em;margin-bottom:16px}
+.feat-copy>p{color:var(--muted);font-size:17px;line-height:1.62;margin-bottom:24px}
+.feat-cta{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:15px;color:var(--rimba);margin-top:4px}
+.feat-cta::after{content:"→";transition:transform .2s}
+.feat-cta:hover::after{transform:translateX(5px)}
+.feat-visual{display:flex;justify-content:center;position:relative}
+.feat-visual::before{content:"";position:absolute;width:118%;height:118%;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--glow,rgba(30,158,106,.24)),transparent 64%);filter:blur(46px);z-index:0;pointer-events:none}
+.feat-visual .screen{position:relative;z-index:1;max-width:560px;width:100%}
+.demo-points{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
+.demo-points li{display:flex;gap:11px;align-items:flex-start;font-size:15px;font-weight:500;color:#33433b}
+.demo-points li .pk{flex:none;width:24px;height:24px;border-radius:8px;background:var(--pucuk);color:var(--rimba);display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:1px}
+@media(max-width:900px){.feat-grid{grid-template-columns:1fr;gap:30px}.feat-copy,.feat-big.rev .feat-copy{order:1;max-width:none;text-align:center;margin:0 auto}.feat-visual,.feat-big.rev .feat-visual{order:2}.demo-points{text-align:left;max-width:430px;margin:0 auto 26px}.feat-cta{justify-content:center}}
+/* screen frame */
+.screen{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-soft);overflow:hidden;width:100%;max-width:430px}
+.screen-bar{display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid var(--line);background:#fbfaf6}
+.screen-title{font-weight:700;font-size:13px;color:var(--ink);display:flex;align-items:center;gap:7px}
+.screen-tag{margin-left:auto;font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--pucuk);color:var(--rimba)}
+.screen-body{padding:15px;min-height:300px;position:relative}
+.ai-ava{width:26px;height:26px;border-radius:50%;overflow:hidden;flex:none;display:block;box-shadow:0 0 0 1px var(--line)}
+.ai-ava.sm{width:22px;height:22px}
+.ai-ava svg{width:100%;height:100%}
+.online{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--daun);font-weight:700}
+.online i{width:7px;height:7px;border-radius:50%;background:var(--daun);box-shadow:0 0 0 3px rgba(30,158,106,.18)}
+/* DEMO A — chat */
+#demoA .chat{display:flex;flex-direction:column;gap:9px}
+.ctx-chip{align-self:flex-start;background:var(--krem-2);border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-size:12px;font-weight:600;color:#3a4a42;font-family:var(--font-mono)}
+.msg{max-width:86%;display:flex;gap:7px;align-items:flex-end;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+.msg.user{align-self:flex-end}
+.msg.user .ubub{background:var(--rimba);color:#fff;border-radius:14px 14px 4px 14px;padding:8px 12px;font-size:13px;font-weight:500;line-height:1.45}
+.msg.ai{align-self:flex-start}
+.msg.ai .bubble{background:#f3f4f6;border:1px solid #e8eae9;color:#1b2a23;border-radius:14px 14px 14px 4px;padding:8px 12px;font-size:13px;line-height:1.5;min-height:18px}
+.dots{display:inline-flex;gap:4px;align-items:center;height:12px;opacity:0}
+.dots i{width:6px;height:6px;border-radius:50%;background:#9aa7a0;animation:dotPulse 1.1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dotPulse{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.txt{display:inline-block;clip-path:inset(0 100% 0 0)}
+.caret{display:none;width:2px;height:13px;background:#1b2a23;vertical-align:-2px;margin-left:1px;animation:caretBlink 1s steps(1) infinite}
+@keyframes caretBlink{50%{opacity:0}}
+.quick{display:flex;gap:7px;flex-wrap:wrap;opacity:0;transform:translateY(6px);transition:.4s;margin-top:3px}
+.quick span{background:rgba(30,158,106,.12);color:var(--rimba);border:1px solid rgba(30,158,106,.25);border-radius:99px;padding:5px 11px;font-size:11.5px;font-weight:700}
+#demoA.p1 .msg.user{opacity:1;transform:none}
+#demoA.p2 .msg.ai{opacity:1;transform:none}
+#demoA.p2 .dots{opacity:1}
+#demoA.p3 .dots{display:none}
+#demoA.p3 .txt{clip-path:inset(0 0 0 0);transition:clip-path 1.4s steps(28,end)}
+#demoA.p3 .caret{display:inline-block}
+#demoA.p4 .caret{display:none}
+#demoA.p4 .quick{opacity:1;transform:none}
+/* DEMO B — chart */
+#demoB .q-prompt,#demoC .q-prompt{font-size:13px;color:#33433b;margin-bottom:9px;font-weight:600}
+#demoB .q-prompt b{color:var(--rimba)}
+.chart,.graph{width:100%;height:auto;display:block}
+.bar{transform-box:fill-box;transform-origin:bottom;transition:transform 1.3s cubic-bezier(.34,1.3,.5,1),fill .4s}
+.bar-q4{transform:scaleY(.30)}
+.target{stroke:var(--tanah);stroke-width:2;stroke-dasharray:5 4;opacity:0;transition:opacity .4s}
+.cursor{opacity:0;transform:translate(259px,104px);transition:opacity .3s,transform 1.3s cubic-bezier(.34,1.3,.5,1)}
+.qcheck-mark{opacity:0;transition:opacity .4s;transform:translate(259px,34px)}
+.hint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:9px}
+.q-check{margin-top:11px;width:100%;height:38px;border:0;border-radius:12px;background:var(--rimba);color:#fff;font-weight:700;font-size:13px;font-family:var(--font-sans);transition:transform .18s,background .35s;cursor:default}
+.toast{position:absolute;left:50%;bottom:54px;transform:translate(-50%,14px);background:var(--rimba);color:#fff;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:99px;opacity:0;transition:.45s cubic-bezier(.34,1.5,.6,1);box-shadow:var(--shadow-card);white-space:nowrap;z-index:3}
+#demoB.p1 .target{opacity:.95}
+#demoB.p1 .cursor{opacity:1}
+#demoB.p2 .bar-q4{transform:scaleY(.85)}
+#demoB.p2 .cursor{transform:translate(259px,34px)}
+#demoB.p3 .q-check{transform:scale(.96)}
+#demoB.p4 .bar-q4{fill:var(--daun)}
+#demoB.p4 .q-check{background:var(--daun)}
+#demoB.p4 .cursor{opacity:0}
+#demoB.p4 .qcheck-mark{opacity:1}
+#demoB.p4 .toast{opacity:1;transform:translate(-50%,0)}
+/* DEMO C — reasoning graph */
+.edge{fill:none;stroke:var(--daun);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .75s ease}
+.node{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center;transition:opacity .4s,transform .5s cubic-bezier(.34,1.7,.6,1)}
+.node circle{fill:#eef3ef;stroke:#d7e0d9;stroke-width:2;transition:fill .4s,stroke .4s}
+.node text{fill:#5a6b62;font-family:var(--font-mono);font-size:12px;font-weight:700;transition:fill .4s}
+.nB{transition-delay:.05s}.nC{transition-delay:.1s}.nD{transition-delay:.15s}.nE{transition-delay:.2s}
+#demoC.p1 .node{opacity:1;transform:scale(1)}
+#demoC.p1 .nA circle{fill:var(--daun);stroke:var(--rimba)}#demoC.p1 .nA text{fill:#fff}
+#demoC.p2 .e1{stroke-dashoffset:0}#demoC.p2 .nB circle{fill:var(--daun);stroke:var(--rimba)}#demoC.p2 .nB text{fill:#fff}
+#demoC.p3 .e2{stroke-dashoffset:0}#demoC.p3 .nC circle{fill:var(--daun);stroke:var(--rimba)}#demoC.p3 .nC text{fill:#fff}
+#demoC.p4 .e3{stroke-dashoffset:0}#demoC.p4 .nD circle{fill:var(--daun);stroke:var(--rimba)}#demoC.p4 .nD text{fill:#fff}
+#demoC.p5 .e4{stroke-dashoffset:0}#demoC.p5 .nE circle{fill:var(--daun);stroke:var(--rimba)}#demoC.p5 .nE text{fill:#fff}
+#demoC.p6 .node circle{filter:drop-shadow(0 0 5px rgba(30,158,106,.55))}
+#demoC.p6 .toast{opacity:1;transform:translate(-50%,0)}
+</style>
+<section class="demos" id="demos" style="padding:86px 0 6px">
+  <div class="wrap"><div class="sec-head reveal">
+    <span class="eyebrow" data-i18n="demos_eyebrow">Lihat langsung</span>
+    <h2 data-i18n="demos_h2">Bukan cuma baca. Kamu beneran ngerjain.</h2>
+    <p data-i18n="demos_sub">Soal interaktif, penalaran visual, dan AI tutor yang nemenin tiap langkah — ini cara belajar di Rangkai.</p>
+  </div></div>
+</section>
+
+<section class="feat-big f-ai"><div class="wrap feat-grid">
+    <div class="feat-copy reveal">
+      <span class="eyebrow" data-i18n="d1_tag">AI Tutor 24/7</span>
+      <h2 data-i18n="d1_h">Mentor yang nggak pernah capek dijelasin ulang</h2>
+      <p data-i18n="d1_p">Stuck di satu soal? Tanya langsung. AI tutor Rangkai jelasin pelan-pelan, pakai contoh, sampai kamu beneran paham — bukan cuma kasih kunci jawaban.</p>
+      <ul class="demo-points">
+        <li><span class="pk">✓</span><span data-i18n="d1_b1">Jawaban langsung, nyambung sama soal yang lagi kamu kerjain</span></li>
+        <li><span class="pk">✓</span><span data-i18n="d1_b2">Minta contoh mirip, tips cepat, atau alasan di balik jawaban</span></li>
+      </ul>
+      <a href="#cta" class="feat-cta" data-i18n="feat_cta">Coba gratis</a>
+    </div>
+    <div class="feat-visual reveal"><div class="screen" id="demoA">
+          <div class="screen-bar">
+            <span class="ai-ava"></span>
+            <span class="screen-title" data-i18n="d1_title">AI Tutor</span>
+            <span class="online"><i></i><span data-i18n="d1_online">online</span></span>
+            <span class="screen-tag">PRO</span>
+          </div>
+          <div class="screen-body chat">
+            <div class="ctx-chip" data-i18n="d1_ctx">📐 Deret angka: 2, 6, 12, 20, ?</div>
+            <div class="msg user"><span class="ubub" data-i18n="d1_user">Kok jawabannya 30? 🤔</span></div>
+            <div class="msg ai"><span class="ai-ava sm"></span><span class="bubble"><span class="dots"><i></i><i></i><i></i></span><span class="txt" data-i18n="d1_ai">Selisihnya naik +2 tiap langkah: 4, 6, 8, lalu 10. Jadi 20 + 10 = 30 🌱</span><i class="caret"></i></span></div>
+            <div class="quick"><span data-i18n="d1_q1">Kasih soal mirip</span><span data-i18n="d1_q2">Tips cepat</span></div>
+          </div>
+        </div></div>
+  </div></section>
+
+<section class="feat-big f-chart rev"><div class="wrap feat-grid">
+    <div class="feat-copy reveal">
+      <span class="eyebrow" data-i18n="d2_tag2">Soal interaktif</span>
+      <h2 data-i18n="d2_h">Soal yang kamu sentuh, bukan cuma dibaca</h2>
+      <p data-i18n="d2_p">Geser batang, tarik titik, atur irisan diagram. Belajar baca data jadi kerasa nyata — bukan lagi pilihan ganda yang gampang ketebak.</p>
+      <ul class="demo-points">
+        <li><span class="pk">✓</span><span data-i18n="d2_b1">Grafik batang, garis & lingkaran yang bisa kamu geser sendiri</span></li>
+        <li><span class="pk">✓</span><span data-i18n="d2_b2">Feedback instan: benar, salah, plus pembahasannya</span></li>
+      </ul>
+      <a href="#cta" class="feat-cta" data-i18n="feat_cta">Coba gratis</a>
+    </div>
+    <div class="feat-visual reveal"><div class="screen" id="demoB">
+          <div class="screen-bar">
+            <span class="screen-title">📊 <span data-i18n="d2_title">Soal Interaktif</span></span>
+            <span class="screen-tag" data-i18n="d2_tag">Grafik</span>
+          </div>
+          <div class="screen-body">
+            <div class="toast" data-i18n="d2_correct">Benar! +20 XP 🎉</div>
+            <p class="q-prompt" data-i18n="d2_prompt">Geser batang <b>Q4</b> sampai sesuai proyeksi penjualan.</p>
+            <svg class="chart" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+              <line x1="28" y1="20" x2="28" y2="150" stroke="#e6ddcb" stroke-width="1.5"/>
+              <line x1="28" y1="150" x2="306" y2="150" stroke="#e6ddcb" stroke-width="1.5"/>
+              <line x1="28" y1="63" x2="306" y2="63" stroke="#f0eadc" stroke-width="1" opacity=".5"/>
+              <line x1="28" y1="106" x2="306" y2="106" stroke="#efe7d3" stroke-width="1" opacity=".5"/>
+              <rect class="bar" x="44"  y="20" width="34" height="130" rx="7" fill="#82cfa6" style="transform:scaleY(.50)"/>
+              <rect class="bar" x="110" y="20" width="34" height="130" rx="7" fill="#82cfa6" style="transform:scaleY(.68)"/>
+              <rect class="bar" x="176" y="20" width="34" height="130" rx="7" fill="#82cfa6" style="transform:scaleY(.58)"/>
+              <rect class="bar bar-q4" x="242" y="20" width="34" height="130" rx="7" fill="#e0a05f"/>
+              <line class="target" x1="236" y1="39" x2="282" y2="39"/>
+              <text x="61"  y="166" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="#9aa7a0">Q1</text>
+              <text x="127" y="166" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="#9aa7a0">Q2</text>
+              <text x="193" y="166" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="#9aa7a0">Q3</text>
+              <text x="259" y="166" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="#5f7167" font-weight="700">Q4</text>
+              <g class="cursor"><circle r="13" fill="rgba(14,92,67,.13)"/><circle r="5" fill="var(--rimba)"/></g>
+              <g class="qcheck-mark"><circle r="12" fill="var(--daun)"/><path d="M-5 0 l3.4 4 l6 -8.5" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+            </svg>
+            <p class="hint" data-i18n="d2_hint">Geser batang ke atas-bawah buat atur nilainya</p>
+            <button class="q-check" data-i18n="d2_check">Cek jawaban</button>
+          </div>
+        </div></div>
+  </div></section>
+
+<section class="feat-big f-reason"><div class="wrap feat-grid">
+    <div class="feat-copy reveal">
+      <span class="eyebrow" data-i18n="d3_tag2">Penalaran visual</span>
+      <h2 data-i18n="d3_h">Latih logika TIU dengan cara yang nempel</h2>
+      <p data-i18n="d3_p">Hubungkan simpul, urutkan kejadian, isi pola yang hilang. Penalaran jadi sesuatu yang kamu lihat dan rasain — bukan paragraf yang bikin pusing.</p>
+      <ul class="demo-points">
+        <li><span class="pk">✓</span><span data-i18n="d3_b1">Sambungkan urutan, susun logika, isi pola visual</span></li>
+        <li><span class="pk">✓</span><span data-i18n="d3_b2">Pas buat TIU, psikotes & tes penalaran rekrutmen</span></li>
+      </ul>
+      <a href="#cta" class="feat-cta" data-i18n="feat_cta">Coba gratis</a>
+    </div>
+    <div class="feat-visual reveal"><div class="screen" id="demoC">
+          <div class="screen-bar">
+            <span class="screen-title">🧩 <span data-i18n="d3_title">Penalaran</span></span>
+            <span class="screen-tag" data-i18n="d3_tag">Logika</span>
+          </div>
+          <div class="screen-body">
+            <div class="toast" data-i18n="d3_done">Mantap! Logikamu nyambung 🎉</div>
+            <p class="q-prompt" data-i18n="d3_prompt">Hubungkan simpul sesuai urutan logis yang benar.</p>
+            <svg class="graph" viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg">
+              <path class="edge e1" d="M48 118 L108 42"  pathLength="1"/>
+              <path class="edge e2" d="M108 42 L168 112" pathLength="1"/>
+              <path class="edge e3" d="M168 112 L232 46" pathLength="1"/>
+              <path class="edge e4" d="M232 46 L286 116" pathLength="1"/>
+              <g class="node nA"><circle cx="48"  cy="118" r="15"/><text x="48"  y="118" text-anchor="middle" dominant-baseline="central">A</text></g>
+              <g class="node nB"><circle cx="108" cy="42"  r="15"/><text x="108" y="42"  text-anchor="middle" dominant-baseline="central">B</text></g>
+              <g class="node nC"><circle cx="168" cy="112" r="15"/><text x="168" y="112" text-anchor="middle" dominant-baseline="central">C</text></g>
+              <g class="node nD"><circle cx="232" cy="46"  r="15"/><text x="232" y="46"  text-anchor="middle" dominant-baseline="central">D</text></g>
+              <g class="node nE"><circle cx="286" cy="116" r="15"/><text x="286" y="116" text-anchor="middle" dominant-baseline="central">E</text></g>
+            </svg>
+            <p class="hint" data-i18n="d3_hint">Ketuk simpul untuk mulai menghubungkan</p>
+          </div>
+        </div></div>
+  </div></section>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function run(id, phases, cycle){
+    const el=document.getElementById(id); if(!el) return;
+    if(reduce){ phases.forEach((_,i)=>el.classList.add('p'+(i+1))); return; }
+    let timers=[];
+    function play(){
+      timers.forEach(clearTimeout); timers=[];
+      for(let i=1;i<=phases.length;i++) el.classList.remove('p'+i);
+      phases.forEach((t,i)=> timers.push(setTimeout(()=>el.classList.add('p'+(i+1)), t)));
+    }
+    let started=false;
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{ if(e.isIntersecting && !started){ started=true; play(); setInterval(play, cycle);} });},{threshold:.3});
+    io.observe(el);
+  }
+  // small mascot head into AI avatars
+  const head='<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="24" r="13" fill="#1e9e6a"/><rect x="12" y="18" width="16" height="13" rx="6.5" fill="#eafaf0"/><rect x="15.5" y="21.5" width="3.6" height="5.4" rx="1.8" fill="#a32a7d"/><rect x="21" y="21.5" width="3.6" height="5.4" rx="1.8" fill="#a32a7d"/><path d="M20 13c-3-1-6 .4-6 .4s.7 3.2 3.2 4.2M20 13c3-1 6 .4 6 .4s-.7 3.2-3.2 4.2M20 18V11" stroke="#0e5c43" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>';
+  document.querySelectorAll('#demoA .ai-ava').forEach(a=>a.innerHTML=head);
+  run('demoA',[700,1900,3400,6200],10500);
+  run('demoB',[800,1700,4300,5000],9800);
+  run('demoC',[600,1700,2600,3500,4400,5400],9200);
+})();
+</script>
+
+<!-- ───────────── MARQUEE ───────────── -->
+<section class="marquee-sec">
+  <div class="wrap">
+    <p class="marquee-label" data-i18n="marquee_label">Siapin diri buat rekrutmen di institusi paling diburu di Indonesia</p>
+  </div>
+  <div class="marquee"><div class="marquee-track" id="mtrack"></div></div>
+</section>
+
+<!-- ───────────── PROBLEM / SOLUTION ───────────── -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="prob_eyebrow">Kenapa Rangkai</span>
+      <h2 data-i18n="prob_h2">Nyiapin rekrutmen sendirian itu… berat.</h2>
+      <p data-i18n="prob_sub">Materi berserakan, nggak tahu mulai dari mana, gampang nyerah. Rangkai bikin semuanya jadi satu jalur yang jelas — dan nemenin kamu di tiap langkah.</p>
+    </div>
+    <div class="compare">
+      <div class="cpanel before reveal" data-d="1">
+        <span class="tag" data-i18n="prob_before_tag">Tanpa Rangkai</span>
+        <h3 data-i18n="prob_before_h">Belajar sendirian</h3>
+        <ul>
+          <li><span class="cmark">✕</span><span data-i18n="prob_b1">PDF &amp; soal berserakan di mana-mana</span></li>
+          <li><span class="cmark">✕</span><span data-i18n="prob_b2">Bingung mulai dari mana &amp; urutannya</span></li>
+          <li><span class="cmark">✕</span><span data-i18n="prob_b3">Nggak ada feedback, nggak tahu salah di mana</span></li>
+          <li><span class="cmark">✕</span><span data-i18n="prob_b4">Motivasi naik-turun, gampang nyerah</span></li>
+        </ul>
+        <div class="mini-mascot" id="sadMascot"></div>
+      </div>
+      <div class="cpanel after reveal" data-d="2">
+        <span class="tag" data-i18n="prob_after_tag">Sama Rangkai</span>
+        <h3 data-i18n="prob_after_h">Ditemani sampai mekar</h3>
+        <ul>
+          <li><span class="cmark">✓</span><span data-i18n="prob_a1">Satu jalur terstruktur sesuai targetmu</span></li>
+          <li><span class="cmark">✓</span><span data-i18n="prob_a2">Pelan-pelan tiap hari, sesuai ritmemu</span></li>
+          <li><span class="cmark">✓</span><span data-i18n="prob_a3">Feedback instan dari AI tutor &amp; try out</span></li>
+          <li><span class="cmark">✓</span><span data-i18n="prob_a4">XP, streak &amp; quest bikin belajar nagih</span></li>
+        </ul>
+        <div class="mini-mascot" id="bloomMascotSmall"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── JOURNEY (signature scroll) ───────────── -->
+<section class="journey s0" id="journey">
+  <div class="wrap">
+    <div class="journey-head">
+      <span class="eyebrow" style="color:var(--daun-soft)" data-i18n="jr_eyebrow">Perjalananmu</span>
+      <h2 data-i18n="jr_h2">Dari benih, jadi mekar.</h2>
+      <p data-i18n="jr_sub">Scroll pelan-pelan — lihat dirimu tumbuh dari hari pertama sampai hari seleksi.</p>
+    </div>
+    <div class="journey-body">
+      <div class="journey-stage">
+        <div class="journey-follow" id="jFollow">
+          <div class="journey-mascot" id="journeyMascot"></div>
+          <div class="growth-meter">
+            <div class="growth-track"><div class="growth-fill" id="growthFill"></div></div>
+            <div class="growth-label" id="growthLabel" data-i18n="jr_stage0">Benih</div>
+          </div>
+        </div>
+      </div>
+      <div class="steps" id="steps">
+        <div class="step" data-stage="0">
+          <span class="num">01</span>
+          <h3 data-i18n="jr_s1_h">Pilih jalurmu</h3>
+          <p data-i18n="jr_s1_p">Mau ke Bank Indonesia, OJK, LPS, atau BUMN? Pilih satu (atau beberapa) target, dan Rangkai nyusun kurikulum yang pas sama latar belakangmu.</p>
+          <div class="feat-row"><span>🎯 PCPM BI</span><span>⚖️ OJK</span><span>🛡️ LPS</span><span>🏦 BUMN</span></div>
+        </div>
+        <div class="step" data-stage="1">
+          <span class="num">02</span>
+          <h3 data-i18n="jr_s2_h">Belajar terstruktur</h3>
+          <p data-i18n="jr_s2_p">Materi dipecah jadi fase → level → lesson kecil-kecil. Pelan-pelan tiap hari, sesuai waktu belajar yang kamu suka. Nggak ada lagi bingung mulai dari mana.</p>
+          <div class="feat-row"><span>📚 Lesson harian</span><span>🧩 Fase &amp; level</span><span>🔔 Pengingat lembut</span></div>
+        </div>
+        <div class="step" data-stage="2">
+          <span class="num">03</span>
+          <h3 data-i18n="jr_s3_h">Latihan &amp; try out</h3>
+          <p data-i18n="jr_s3_p">Asah dengan latihan soal tanpa batas, tips santai lolos psikotes TWK, dan try out interview AI pakai STAR method. Dapat feedback langsung tiap selesai.</p>
+          <div class="feat-row"><span>📝 Soal tanpa batas</span><span>🧠 Psikotes &amp; TWK</span><span>🎤 Interview AI</span></div>
+        </div>
+        <div class="step" data-stage="3">
+          <span class="num">04</span>
+          <h3 data-i18n="jr_s4_h">Mekar di hari seleksi</h3>
+          <p data-i18n="jr_s4_p">CV udah dicek &amp; dirapiin, latihan udah matang, mental udah siap. Kamu masuk ruang seleksi dengan percaya diri — mekar di saat yang tepat.</p>
+          <div class="feat-row"><span>✅ CV siap</span><span>💪 Percaya diri</span><span>🌸 Hari-H</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FEATURES ───────────── -->
+<section class="pad features" id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="feat_eyebrow">Semua dalam satu app</span>
+      <h2 data-i18n="feat_h2">Semua yang kamu butuh buat lolos</h2>
+      <p data-i18n="feat_sub">Bukan cuma kumpulan materi. Rangkai itu teman belajar lengkap yang ngerti targetmu.</p>
+    </div>
+    <div class="fgrid">
+      <div class="fcard reveal" data-d="1" style="--glow:rgba(30,158,106,.16)">
+        <div class="fic" style="background:rgba(30,158,106,.14)">💬</div>
+        <h3 data-i18n="f1_h">AI Tutor 24/7</h3>
+        <p data-i18n="f1_p">Tanya apa aja, dijawab pelan-pelan sampai kamu paham. Kayak punya kakak tingkat yang sabar.</p>
+        <div class="quote" data-i18n="f1_q">"Tips santai lolos psikotes TWK"</div>
+      </div>
+      <div class="fcard reveal" data-d="2" style="--glow:rgba(242,193,78,.18)">
+        <span class="ftag">PRO</span>
+        <div class="fic" style="background:rgba(242,193,78,.16)">🎤</div>
+        <h3 data-i18n="f2_h">Try Out Interview AI</h3>
+        <p data-i18n="f2_p">Latihan wawancara skenario kerja nyata. Dapat skor &amp; masukan biar makin pede.</p>
+        <div class="quote" data-i18n="f2_q">"Pakai STAR method, cerita pengalamanmu"</div>
+      </div>
+      <div class="fcard reveal" data-d="3" style="--glow:rgba(219,123,88,.18)">
+        <span class="ftag">PRO</span>
+        <div class="fic" style="background:rgba(219,123,88,.14)">📄</div>
+        <h3 data-i18n="f3_h">CV Checker otomatis</h3>
+        <p data-i18n="f3_p">Unggah CV-mu, dapat skor &amp; saran perbaikan yang jelas. Rapiin pelan-pelan.</p>
+        <div class="quote" data-i18n="f3_q">"CV kamu sudah kuat. Tinggal rapiin beberapa bagian."</div>
+      </div>
+      <div class="fcard reveal" data-d="1" style="--glow:rgba(30,158,106,.16)">
+        <div class="fic" style="background:rgba(30,158,106,.14)">📝</div>
+        <h3 data-i18n="f4_h">Latihan soal tanpa batas</h3>
+        <p data-i18n="f4_p">Ribuan soal ala ujian asli — TWK, TIU, TKP, psikotes — lengkap dengan pembahasan.</p>
+      </div>
+      <div class="fcard reveal" data-d="2" style="--glow:rgba(91,143,214,.18)">
+        <div class="fic" style="background:rgba(91,143,214,.14)">📚</div>
+        <h3 data-i18n="f5_h">Perpustakaan PDF &amp; video</h3>
+        <p data-i18n="f5_p">Materi kurasi rapi buat tiap jalur. Belajar lewat baca atau nonton, sesukamu.</p>
+      </div>
+      <div class="fcard reveal" data-d="3" style="--glow:rgba(242,193,78,.18)">
+        <div class="fic" style="background:rgba(242,193,78,.16)">🏆</div>
+        <h3 data-i18n="f6_h">Gamifikasi yang bikin nagih</h3>
+        <p data-i18n="f6_p">XP, streak, daily quest &amp; leaderboard. Belajar berat jadi kebiasaan kecil yang seru.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── GAMIFY ───────────── -->
+<section class="pad gamify" id="gamify">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="color:var(--madu)" data-i18n="gam_eyebrow">Bikin belajar nagih</span>
+      <h2 data-i18n="gam_h2">Konsistensi yang kerasa kayak main game</h2>
+      <p data-i18n="gam_sub">Tiap lesson dapat XP. Tiap hari jaga streak. Tiap minggu naik leaderboard. Pelan-pelan, tapi nagih.</p>
+    </div>
+    <div class="gam-grid">
+      <div class="gam-card reveal" data-d="1">
+        <div class="gam-stat">
+          <div class="stat-box"><div class="v mono" data-count="2450">0</div><div class="l" data-i18n="gam_xp">Total XP minggu ini</div></div>
+          <div class="stat-box flame"><div class="v mono"><span data-count="12">0</span>🔥</div><div class="l" data-i18n="gam_streak">Hari streak beruntun</div></div>
+        </div>
+        <div style="margin-top:18px">
+          <div class="qtitle" data-i18n="gam_quest_t">Quest hari ini</div>
+          <div class="qsub" data-i18n="gam_quest_s">Selesaikan buat jaga streak &amp; kumpulin XP</div>
+          <div class="quest done"><span class="qbox">✓</span><span class="qn" data-i18n="gam_q1">Selesai 1 lesson</span><span class="qxp">+30</span></div>
+          <div class="quest done"><span class="qbox">✓</span><span class="qn" data-i18n="gam_q2">Latihan 10 soal</span><span class="qxp">+50</span></div>
+          <div class="quest"><span class="qbox">✓</span><span class="qn" data-i18n="gam_q3">Ngobrol sama AI tutor</span><span class="qxp">+20</span></div>
+          <div class="qbar"><i id="qbar"></i></div>
+        </div>
+      </div>
+      <div class="gam-card reveal" data-d="2">
+        <div class="qtitle" data-i18n="gam_lb_t">Leaderboard mingguan</div>
+        <div class="qsub" data-i18n="gam_lb_s">Liga Pucuk · sisa 2 hari</div>
+        <div class="lead-row"><span class="lead-rank">1</span><span class="lead-av" style="background:var(--madu)">A</span><span class="lead-name">Anindya P.<small data-i18n="gam_lb_role1">Target: PCPM BI</small></span><span class="lead-xp">3.120</span></div>
+        <div class="lead-row"><span class="lead-rank">2</span><span class="lead-av" style="background:var(--daun-soft)">R</span><span class="lead-name">Raka W.<small data-i18n="gam_lb_role2">Target: OJK</small></span><span class="lead-xp">2.870</span></div>
+        <div class="lead-row me"><span class="lead-rank">3</span><span class="lead-av" style="background:var(--tanah)">K</span><span class="lead-name" data-i18n="gam_lb_you">Kamu<small data-i18n="gam_lb_role3">Target: LPS</small></span><span class="lead-xp">2.450</span></div>
+        <div class="lead-row"><span class="lead-rank">4</span><span class="lead-av" style="background:#7aa0c9">D</span><span class="lead-name">Dimas A.<small data-i18n="gam_lb_role4">Target: BUMN</small></span><span class="lead-xp">2.190</span></div>
+        <div class="lead-row"><span class="lead-rank">5</span><span class="lead-av" style="background:var(--pucuk);color:#0a1813">S</span><span class="lead-name">Sari M.<small data-i18n="gam_lb_role5">Target: BRI</small></span><span class="lead-xp">1.980</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── PRICING ───────────── -->
+<section class="pad pricing" id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-i18n="pr_eyebrow">Harga</span>
+      <h2 data-i18n="pr_h2">Mulai gratis. Upgrade kalau udah klik.</h2>
+      <p data-i18n="pr_sub">Semua jalur, AI tutor, sama try out lengkap. Pelan-pelan, sampai kamu siap.</p>
+    </div>
+    <div style="text-align:center" class="reveal">
+      <div class="cycle" id="cycle">
+        <button data-cycle="monthly" data-i18n="pr_cyc_m">Bulanan</button>
+        <button data-cycle="annual" class="on" data-i18n="pr_cyc_a">Tahunan<span class="save">-34%</span></button>
+        <button data-cycle="lifetime" data-i18n="pr_cyc_l">Seumur hidup</button>
+      </div>
+    </div>
+    <div class="plans">
+      <div class="plan reveal" data-d="1">
+        <div class="pname">🌱 <span data-i18n="pr_free_n">Gratis</span></div>
+        <div class="pdesc" data-i18n="pr_free_d">Buat mulai tumbuh, tanpa biaya.</div>
+        <div class="price"><span class="cur">Rp</span><span class="amt">0</span><span class="per" data-i18n="pr_forever">selamanya</span></div>
+        <div class="billed"></div>
+        <ul>
+          <li><span class="pk">✓</span><span data-i18n="pr_f1">Akses jalur dasar</span></li>
+          <li><span class="pk">✓</span><span><b>50</b> <span data-i18n="pr_f2">latihan soal / hari</span></span></li>
+          <li><span class="pk">✓</span><span><b>5</b> <span data-i18n="pr_f3">chat AI tutor / hari</span></span></li>
+          <li><span class="pk">✓</span><span data-i18n="pr_f4">XP, streak &amp; leaderboard</span></li>
+          <li class="off"><span class="pk">✕</span><span data-i18n="pr_f5">Try out interview &amp; CV checker</span></li>
+        </ul>
+        <a href="#cta" class="btn btn-ghost" style="justify-content:center" data-i18n="pr_free_cta">Mulai gratis</a>
+      </div>
+      <div class="plan pro reveal" data-d="2">
+        <div class="pop" data-i18n="pr_pop">⭐ Paling populer</div>
+        <div class="pname">🌸 <span>Rangkai Pro</span></div>
+        <div class="pdesc" data-i18n="pr_pro_d">Buka semuanya, ditemani sampai mekar.</div>
+        <div class="price"><span class="cur">Rp</span><span class="amt" id="proAmt">39rb</span><span class="per" id="proPer" data-i18n="pr_per_m">/bulan</span></div>
+        <div class="billed" id="proBilled" data-i18n="pr_billed_a">Ditagih Rp468rb / tahun · hemat 34%</div>
+        <ul>
+          <li><span class="pk">✓</span><span data-i18n="pr_p1"><b>Semua</b> path &amp; level kebuka</span></li>
+          <li><span class="pk">✓</span><span data-i18n="pr_p2">Latihan soal &amp; AI tutor <b>tanpa batas</b></span></li>
+          <li><span class="pk">✓</span><span data-i18n="pr_p3">Try out interview AI</span></li>
+          <li><span class="pk">✓</span><span data-i18n="pr_p4">CV checker otomatis</span></li>
+          <li><span class="pk">✓</span><span data-i18n="pr_p5">Perpustakaan lengkap + progres detail</span></li>
+          <li><span class="pk">✓</span><span><b>3</b> <span data-i18n="pr_p6">streak freeze / bulan</span></span></li>
+        </ul>
+        <a href="#cta" class="btn btn-primary" style="justify-content:center" data-i18n="pr_pro_cta">Coba Rangkai Pro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── CTA ───────────── -->
+<section class="pad cta" id="cta">
+  <div class="wrap">
+    <div class="cta-card reveal" id="ctaCard">
+      <div class="cta-mascot" id="ctaMascot"></div>
+      <h2 data-i18n="cta_h2">Yuk mulai pelan-pelan. Hari seleksimu nggak nunggu.</h2>
+      <p data-i18n="cta_p">Gabung sekarang, gratis. Rangkai bakal nemenin kamu tumbuh dari benih sampai mekar di hari-H.</p>
+      <form class="cta-form" onsubmit="return false">
+        <input type="email" placeholder="kamu@email.com" data-i18n-ph="cta_ph" aria-label="email" />
+        <button class="btn btn-gold" type="submit" data-i18n="cta_btn">Mulai gratis →</button>
+      </form>
+      <div class="cta-fine" data-i18n="cta_fine">Tanpa kartu kredit · Batal kapan aja · Ditemani sampai hari seleksi</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FOOTER ───────────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="24" r="13" fill="#1e9e6a"/><rect x="12" y="18" width="16" height="13" rx="6.5" fill="#eafaf0"/><rect x="15.5" y="21.5" width="3.6" height="5.4" rx="1.8" fill="#a32a7d"/><rect x="21" y="21.5" width="3.6" height="5.4" rx="1.8" fill="#a32a7d"/><path d="M20 13c-3-1-6 .4-6 .4s.7 3.2 3.2 4.2M20 13c3-1 6 .4 6 .4s-.7 3.2-3.2 4.2M20 18V11" stroke="#0e5c43" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>
+          Rangkai
+        </a>
+        <p data-i18n="foot_tag">Teman buat nyiapin diri menuju rekrutmen BUMN, BI, OJK, LPS, dan lainnya. Pelan-pelan, sampai kamu siap.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4 data-i18n="foot_c1">Produk</h4>
+          <a href="#journey" data-i18n="nav_how">Cara kerja</a>
+          <a href="#features" data-i18n="nav_features">Fitur</a>
+          <a href="#gamify" data-i18n="nav_game">Gamifikasi</a>
+          <a href="#pricing" data-i18n="nav_price">Harga</a>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot_c2">Jalur</h4>
+          <a href="#">PCPM Bank Indonesia</a>
+          <a href="#">OJK</a>
+          <a href="#">LPS</a>
+          <a href="#">BUMN</a>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot_c3">Rangkai</h4>
+          <a href="#" data-i18n="foot_about">Tentang</a>
+          <a href="#" data-i18n="foot_login">Masuk</a>
+          <a href="#" data-i18n="foot_help">Bantuan</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Rangkai · <span data-i18n="foot_made">Dibikin pelan-pelan</span> 🌱</span>
+      <span data-i18n="foot_rights">Hak cipta dilindungi.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ════════════════════════  MASCOT FACTORY  ════════════════════════ */
+const ART = {
+  hero: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Happy"><defs><linearGradient id="bd_01happy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_01happy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_01happy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_01happy)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_01happy)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_01happy)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_01happy)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><g class="m-eyes blink"><g class="pup-l"><rect x="84" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="89" cy="124" r="3.6" fill="#fff"/></g><g class="pup-r"><rect x="139" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="144" cy="124" r="3.6" fill="#fff"/></g></g><path d="M110 153 q10 9 20 0" stroke="#7a1e5c" stroke-width="4.5" fill="none" stroke-linecap="round"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g></svg>`,
+  sad: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Sad"><defs><linearGradient id="bd_03sad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_03sad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_03sad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><g transform="rotate(20 120 78)"><path d="M120 78 C 118 65, 122 59.8, 120 52" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 50)"><path d="M0 0 C -23.92 -9.200000000000001, -27.6 -31.28, -2 -27.6 C -5.5200000000000005 -12.88, -3.68 -6, 0 0Z" fill="url(#lf_03sad)"/><path d="M0 0 C 23.92 -9.200000000000001, 27.6 -31.28, 2 -27.6 C 5.5200000000000005 -12.88, 3.68 -6, 0 0Z" fill="url(#lf_03sad)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_03sad)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_03sad)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="152" rx="9" ry="6" fill="#f0a6c2" opacity=".4"/><ellipse cx="156" cy="152" rx="9" ry="6" fill="#f0a6c2" opacity=".4"/><path d="M82 112 Q90 106 99 107" stroke="#a32a7d" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M141 107 Q150 106 158 112" stroke="#a32a7d" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="84" y="118" width="17" height="27" rx="8.5" fill="#a32a7d"/><circle cx="88" cy="134" r="4.4" fill="#fff"/><circle cx="94" cy="126" r="2" fill="#fff"/><rect x="139" y="118" width="17" height="27" rx="8.5" fill="#a32a7d"/><circle cx="143" cy="134" r="4.4" fill="#fff"/><circle cx="149" cy="126" r="2" fill="#fff"/><path d="M110 163 q10 -8 20 0" stroke="#7a1e5c" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g><path d="M196 96 q-6 8 0 14" stroke="#5b8fd6" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/></svg>`,
+  bloom: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Stage 4 · Bloom"><defs><linearGradient id="bd_31stagebloom" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_31stagebloom" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_31stagebloom" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 58, 122 50, 120 38" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 58)"><path d="M0 0 C -24.7 -9.5, -28.5 -32.3, -2 -28.5 C -5.699999999999999 -13.299999999999999, -3.8 -6, 0 0Z" fill="url(#lf_31stagebloom)"/><path d="M0 0 C 24.7 -9.5, 28.5 -32.3, 2 -28.5 C 5.699999999999999 -13.299999999999999, 3.8 -6, 0 0Z" fill="url(#lf_31stagebloom)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><g><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(0 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(72 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(144 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(216 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(288 120 36)"/><circle cx="120" cy="36" r="10" fill="#f2c14e"/><circle cx="120" cy="36" r="5" fill="#e0a93b"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_31stagebloom)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_31stagebloom)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="82" cy="151" rx="11" ry="7" fill="#f0a6c2" opacity=".82"/><ellipse cx="158" cy="151" rx="11" ry="7" fill="#f0a6c2" opacity=".82"/><path d="M92 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L92 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M148 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L148 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g><path d="M150 23 L152 28 L157 30 L152 32 L150 37 L148 32 L143 30 L148 28 Z" fill="#f2c14e"/><path d="M92 28.4 L93.6 32.4 L97.6 34 L93.6 35.6 L92 39.6 L90.4 35.6 L86.4 34 L90.4 32.4 Z" fill="#fff"/><path d="M120 -20.3 L121.8 -15.8 L126.3 -14 L121.8 -12.2 L120 -7.7 L118.2 -12.2 L113.7 -14 L118.2 -15.8 Z" fill="#f2c14e"/></svg>`,
+  seed: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Stage 1 · Seed"><defs><linearGradient id="bd_28stageseed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_28stageseed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_28stageseed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><g transform="translate(120 70)"><path d="M0 0 C -13 -5, -15 -17, -2 -15 C -3 -7, -2 -6, 0 0Z" fill="url(#lf_28stageseed)"/><path d="M0 0 C 13 -5, 15 -17, 2 -15 C 3 -7, 2 -6, 0 0Z" fill="url(#lf_28stageseed)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_28stageseed)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_28stageseed)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><rect x="84" y="118" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="89" cy="126" r="3.6" fill="#fff"/><rect x="139" y="118" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="144" cy="126" r="3.6" fill="#fff"/><path d="M113 154 q7 6 14 0" stroke="#7a1e5c" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g></svg>`,
+  sprout: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Stage 2 · Sprout"><defs><linearGradient id="bd_29stagesprout" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_29stagesprout" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_29stagesprout" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_29stagesprout)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_29stagesprout)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_29stagesprout)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_29stagesprout)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><rect x="84" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="89" cy="124" r="3.6" fill="#fff"/><rect x="139" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="144" cy="124" r="3.6" fill="#fff"/><path d="M110 153 q10 9 20 0" stroke="#7a1e5c" stroke-width="4.5" fill="none" stroke-linecap="round"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g></svg>`,
+  bud: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Stage 3 · Bud"><defs><linearGradient id="bd_30stagebud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_30stagebud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_30stagebud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 55, 122 45.800000000000004, 120 32" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 60)"><path d="M0 0 C -23.400000000000002 -9, -27 -30.6, -2 -27 C -5.4 -12.6, -3.6 -6, 0 0Z" fill="url(#lf_30stagebud)"/><path d="M0 0 C 23.400000000000002 -9, 27 -30.6, 2 -27 C 5.4 -12.6, 3.6 -6, 0 0Z" fill="url(#lf_30stagebud)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><g transform="translate(120 30)"><ellipse cx="0" cy="0" rx="11" ry="16" fill="#e58fb6"/><ellipse cx="0" cy="-2" rx="6" ry="11" fill="#f2a9c8"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_30stagebud)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_30stagebud)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><rect x="84" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="89" cy="124" r="3.6" fill="#fff"/><rect x="139" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="144" cy="124" r="3.6" fill="#fff"/><path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g><path d="M150 34.4 L151.6 38.4 L155.6 40 L151.6 41.6 L150 45.6 L148.4 41.6 L144.4 40 L148.4 38.4 Z" fill="#f2a9c8"/></svg>`,
+  excited: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Excited"><defs><linearGradient id="bd_02excited" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_02excited" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_02excited" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 55, 122 45.800000000000004, 120 32" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 32)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_02excited)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_02excited)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_02excited)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_02excited)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><path d="M92 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L92 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M148 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L148 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/><path d="M54 150 L40 120" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="120" r="9" fill="#118a58"/><path d="M186 150 L200 120" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="120" r="9" fill="#118a58"/></g><path d="M36 140.9 L38.6 147.4 L45.1 150 L38.6 152.6 L36 159.1 L33.4 152.6 L26.9 150 L33.4 147.4 Z" fill="#f2c14e"/><path d="M206 140.9 L208.6 147.4 L215.1 150 L208.6 152.6 L206 159.1 L203.4 152.6 L196.9 150 L203.4 147.4 Z" fill="#f2c14e"/><path d="M120 -25 L122 -20 L127 -18 L122 -16 L120 -11 L118 -16 L113 -18 L118 -20 Z" fill="#f2c14e"/><path d="M60 24.4 L61.6 28.4 L65.6 30 L61.6 31.6 L60 35.6 L58.4 31.6 L54.4 30 L58.4 28.4 Z" fill="#fff"/><path d="M184 21.7 L185.8 26.2 L190.3 28 L185.8 29.8 L184 34.3 L182.2 29.8 L177.7 28 L182.2 26.2 Z" fill="#fff"/></svg>`,
+  proud: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Proud"><defs><linearGradient id="bd_14proud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_14proud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_14proud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 55, 122 45.800000000000004, 120 32" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 32)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_14proud)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_14proud)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_14proud)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_14proud)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><path d="M83 133 q9 -9 18 0" stroke="#a32a7d" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M139 133 q9 -9 18 0" stroke="#a32a7d" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M110 157 q11 5 20 -3" stroke="#7a1e5c" stroke-width="4.5" fill="none" stroke-linecap="round"/><path d="M56 150 L42 170 L76 186" stroke="#118a58" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="76" cy="186" r="9" fill="#118a58"/><path d="M184 150 L198 170 L164 186" stroke="#118a58" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="164" cy="186" r="9" fill="#118a58"/></g><path d="M120 -23 L122 -18 L127 -16 L122 -14 L120 -9 L118 -14 L113 -16 L118 -18 Z" fill="#f2c14e"/><path d="M44 34.4 L45.6 38.4 L49.6 40 L45.6 41.6 L44 45.6 L42.4 41.6 L38.4 40 L42.4 38.4 Z" fill="#f2c14e"/></svg>`,
+  f_tutor: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Studying"><defs><linearGradient id="bd_21studying" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_21studying" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_21studying" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_21studying)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_21studying)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_21studying)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_21studying)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><rect x="84" y="120" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="89" cy="128" r="3.6" fill="#fff"/><rect x="139" y="120" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="144" cy="128" r="3.6" fill="#fff"/><path d="M113 154 q7 6 14 0" stroke="#7a1e5c" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M54 150 L90 182" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="90" cy="182" r="9" fill="#118a58"/><path d="M186 150 L150 182" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="150" cy="182" r="9" fill="#118a58"/></g><g transform="translate(120 184)"><path d="M0 -4 L-38 -12 L-38 14 L0 18 Z" fill="#f6fdf9" stroke="#bcd3c4" stroke-width="2" stroke-linejoin="round"/><path d="M0 -4 L38 -12 L38 14 L0 18 Z" fill="#e9f6ef" stroke="#bcd3c4" stroke-width="2" stroke-linejoin="round"/><path d="M-30 -6 l22 3 M-30 0 l22 3 M-30 6 l20 3" stroke="#bcd3c4" stroke-width="1.6" stroke-linecap="round"/><path d="M30 -6 l-22 3 M30 0 l-22 3 M30 6 l-20 3" stroke="#bcd3c4" stroke-width="1.6" stroke-linecap="round"/><path d="M-40 12 L0 18 L40 12 L40 19 L0 25 L-40 19 Z" fill="#0e5c43"/></g></svg>`,
+  f_interview: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Interview-ready"><defs><linearGradient id="bd_33tie" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_33tie" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_33tie" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_33tie)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_33tie)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_33tie)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_33tie)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><path d="M82 101 q9 -5 18 1" stroke="#a32a7d" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M139 101 q9 -5 19 1" stroke="#a32a7d" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="84" y="121" width="17" height="21" rx="8" fill="#a32a7d"/><circle cx="90" cy="127" r="3.4" fill="#fff"/><rect x="139" y="121" width="17" height="21" rx="8" fill="#a32a7d"/><circle cx="145" cy="127" r="3.4" fill="#fff"/><path d="M109 156 q11 5 22 0" stroke="#7a1e5c" stroke-width="4.6" fill="none" stroke-linecap="round"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g><g transform="translate(120 176)"><path d="M-13 -2 L0 -12 L13 -2 L6 4 L0 -2 L-6 4 Z" fill="#fff" stroke="#bcd3c4" stroke-width="1.4"/><path d="M-4 8 L4 8 L7 30 L0 36 L-7 30 Z" fill="#a32a7d"/><path d="M-5 2 L5 2 L4 8 L-4 8 Z" fill="#7a1e5c"/></g></svg>`,
+  f_cv: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Searching"><defs><linearGradient id="bd_25search" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_25search" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_25search" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_25search)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_25search)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_25search)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_25search)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><path d="M139 101 q9 -5 19 1" stroke="#a32a7d" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="92" cy="130" rx="9" ry="11" fill="#fff" stroke="#a32a7d" stroke-width="2.6"/><circle cx="95" cy="125" r="5" fill="#a32a7d"/><ellipse cx="148" cy="130" rx="9" ry="11" fill="#fff" stroke="#a32a7d" stroke-width="2.6"/><circle cx="151" cy="125" r="5" fill="#a32a7d"/><ellipse cx="120" cy="157" rx="5.5" ry="4" fill="#7a1e5c"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M186 150 L196 172 L168 186" stroke="#118a58" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="168" cy="186" r="9" fill="#118a58"/></g><g transform="translate(152 178)"><rect x="9" y="9" width="22" height="8" rx="4" fill="#5b8fd6" transform="rotate(45 9 9)"/><circle cx="0" cy="0" r="15" fill="#dff0ff" stroke="#5b8fd6" stroke-width="4"/><path d="M-6 -7 a9 9 0 0 1 8 -4" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".7"/></g></svg>`,
+  f_practice: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Idea"><defs><linearGradient id="bd_23idea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_23idea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_23idea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_23idea)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_23idea)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_23idea)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_23idea)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><circle cx="92" cy="130" r="15.5" fill="#fff" stroke="#a32a7d" stroke-width="3"/><circle cx="92" cy="132" r="8.5" fill="#a32a7d"/><circle cx="95.5" cy="128.5" r="3" fill="#fff"/><circle cx="148" cy="130" r="15.5" fill="#fff" stroke="#a32a7d" stroke-width="3"/><circle cx="148" cy="132" r="8.5" fill="#a32a7d"/><circle cx="151.5" cy="128.5" r="3" fill="#fff"/><path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M186 148 L202 118 L202 92" stroke="#118a58" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="198" y="82" width="8" height="14" rx="4" fill="#118a58"/></g><g transform="translate(120 28)"><path d="M0 -28 v8 M-19 -19 l5 6 M19 -19 l-5 6 M-27 1 h7 M27 1 h-7" stroke="#f2c14e" stroke-width="3" stroke-linecap="round"/><circle cx="0" cy="0" r="16" fill="#f2c14e" stroke="#e0a93b" stroke-width="2"/><circle cx="-5" cy="-5" r="5" fill="#fff" opacity=".5"/><rect x="-7" y="13" width="14" height="6" rx="2" fill="#c9b06a"/><rect x="-7" y="18" width="14" height="3.4" rx="1.7" fill="#b39a52"/><path d="M-4 -3 q4 7 8 0" stroke="#e0a93b" stroke-width="2" fill="none"/></g></svg>`,
+  f_library: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Listening"><defs><linearGradient id="bd_34headphones" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_34headphones" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_34headphones" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_34headphones)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_34headphones)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_34headphones)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_34headphones)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><path d="M83 133 q9 -9 18 0" stroke="#a32a7d" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M139 133 q9 -9 18 0" stroke="#a32a7d" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M113 154 q7 6 14 0" stroke="#7a1e5c" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/></g><g><path d="M64 128 Q120 70 176 128" fill="none" stroke="#0e5c43" stroke-width="9" stroke-linecap="round"/><rect x="56" y="120" width="17" height="30" rx="8" fill="#0e5c43"/><rect x="60" y="125" width="9" height="20" rx="4.5" fill="#1e9e6a"/><rect x="167" y="120" width="17" height="30" rx="8" fill="#0e5c43"/><rect x="171" y="125" width="9" height="20" rx="4.5" fill="#1e9e6a"/></g><g transform="translate(36 96)" fill="#a32a7d"><ellipse cx="0" cy="6" rx="4.4" ry="3.3000000000000003"/><rect x="3.3000000000000003" y="-8.8" width="1.9800000000000002" height="15.400000000000002"/><path d="M3.3000000000000003 -8.8 q5.5 1 5.5 5.5 q0 -4.4 -5.5 -3.3000000000000003 z"/></g><g transform="translate(196 72)" fill="#a32a7d"><ellipse cx="0" cy="6" rx="4" ry="3"/><rect x="3" y="-8" width="1.8" height="14"/><path d="M3 -8 q5 1 5 5 q0 -4 -5 -3 z"/></g></svg>`,
+  f_game: `<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Victory"><defs><linearGradient id="bd_22trophy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient><linearGradient id="fc_22trophy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient><linearGradient id="lf_22trophy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient></defs><ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/><g class="m-body" transform=""><path d="M120 78 C 118 55, 122 45.800000000000004, 120 32" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 32)"><path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_22trophy)"/><path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_22trophy)"/><path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/><path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/><rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_22trophy)"/><ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/><ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/><rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_22trophy)"/><ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/><ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><path d="M92 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L92 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M148 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L148 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/><path d="M54 150 L88 182" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="88" cy="182" r="9" fill="#118a58"/><path d="M186 150 L152 182" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="152" cy="182" r="9" fill="#118a58"/></g><g transform="translate(120 184)"><path d="M-15 -18 H15 L13 -2 Q0 9 -13 -2 Z" fill="#f2c14e" stroke="#e0a93b" stroke-width="2" stroke-linejoin="round"/><path d="M-15 -14 Q-28 -13 -23 2 Q-19 9 -12 7" fill="none" stroke="#e0a93b" stroke-width="3"/><path d="M15 -14 Q28 -13 23 2 Q19 9 12 7" fill="none" stroke="#e0a93b" stroke-width="3"/><rect x="-4" y="0" width="8" height="11" fill="#e0a93b"/><rect x="-13" y="11" width="26" height="6" rx="2" fill="#e0a93b"/><path d="M0 -14 l2.2 5 5.4 .5 -4 3.6 1.3 5.3 -4.9 -3 -4.9 3 1.3 -5.3 -4 -3.6 5.4 -.5z" fill="#fff" opacity=".85"/></g><path d="M40 132.3 L42.2 137.8 L47.7 140 L42.2 142.2 L40 147.7 L37.8 142.2 L32.3 140 L37.8 137.8 Z" fill="#f2c14e"/><path d="M202 132.3 L204.2 137.8 L209.7 140 L204.2 142.2 L202 147.7 L199.8 142.2 L194.3 140 L199.8 137.8 Z" fill="#f2c14e"/><path d="M120 -22.3 L121.8 -17.8 L126.3 -16 L121.8 -14.2 L120 -9.7 L118.2 -14.2 L113.7 -16 L118.2 -17.8 Z" fill="#f2c14e"/></svg>`
+};
+
+/* ════════════════════════  MOUNT MASCOTS  ════════════════════════ */
+document.getElementById('heroMascot').innerHTML = ART.hero;
+document.getElementById('sadMascot').innerHTML = ART.sad;
+document.getElementById('bloomMascotSmall').innerHTML = ART.bloom;
+document.getElementById('ctaMascot').innerHTML = ART.excited;
+['f_tutor','f_interview','f_cv','f_practice','f_library','f_game'].forEach((k,i)=>{const fic=document.querySelectorAll('.fgrid .fic')[i]; if(fic){fic.classList.add('fic-mascot'); fic.innerHTML=ART[k];}});
+const journeyEl = document.getElementById('journeyMascot');
+const JSTAGE = ['seed','sprout','bud','bloom'];
+let curStage = -1;
+function setJourney(i){
+  if(i===curStage) return; curStage=i;
+  journeyEl.innerHTML = ART[JSTAGE[i]];
+  document.getElementById('growthFill').style.width = [12,42,72,100][i]+'%';
+  const lbl = document.getElementById('growthLabel');
+  lbl.textContent = I18N[lang]['jr_stage'+i];
+  document.querySelectorAll('#journey').forEach(s=>{});
+  const sec=document.getElementById('journey');
+  sec.className='journey s'+i;
+}
+
+/* hero mascot: eyes follow cursor + poke */
+(function(){
+  const hero=document.getElementById('heroMascot');
+  const pl=hero.querySelector('.pup-l'), pr=hero.querySelector('.pup-r');
+  if(pl&&pr&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    window.addEventListener('mousemove',e=>{
+      const r=hero.getBoundingClientRect();
+      const dx=Math.max(-3.2,Math.min(3.2,(e.clientX-(r.left+r.width/2))/60));
+      const dy=Math.max(-3,Math.min(3,(e.clientY-(r.top+r.height/2))/70));
+      pl.style.transform=`translate(${dx}px,${dy}px)`; pr.style.transform=`translate(${dx}px,${dy}px)`;
+    },{passive:true});
+  }
+  hero.addEventListener('click',()=>{
+    hero.classList.remove('poke'); void hero.offsetWidth; hero.classList.add('poke');
+    burst(hero);
+  });
+})();
+function burst(el){
+  const r=el.getBoundingClientRect(); const cx=r.left+r.width/2, cy=r.top+r.height*0.32;
+  for(let i=0;i<10;i++){
+    const s=document.createElement('div'); s.textContent=['🌿','✨','🌸','⭐'][i%4];
+    s.style.cssText=`position:fixed;left:${cx}px;top:${cy}px;font-size:18px;pointer-events:none;z-index:200;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .9s`;
+    document.body.appendChild(s);
+    const a=Math.random()*6.28, d=70+Math.random()*70;
+    requestAnimationFrame(()=>{s.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-30}px) rotate(${Math.random()*360}deg)`;s.style.opacity='0';});
+    setTimeout(()=>s.remove(),950);
+  }
+}
+
+/* ════════════════════════  MARQUEE  ════════════════════════ */
+const ORGS=[['🎯','PCPM Bank Indonesia'],['⚖️','OJK'],['🛡️','LPS'],['🏦','BUMN'],['🏦','BRI'],['🏦','BNI'],['🏦','Bank Mandiri'],['🏠','BTN'],['⚡','PLN'],['🛢️','Pertamina'],['📡','Telkom']];
+(function(){
+  const t=document.getElementById('mtrack');
+  const html=[...ORGS,...ORGS].map(([g,n])=>`<div class="org"><span class="glyph">${g}</span>${n}</div>`).join('');
+  t.innerHTML=html;
+})();
+
+/* ════════════════════════  REVEAL + COUNTERS  ════════════════════════ */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* safety net: never leave content hidden if a fast scroll skips the observer */
+addEventListener('load',()=>setTimeout(()=>{const vh=innerHeight;document.querySelectorAll('.reveal:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<vh)el.classList.add('in');});},1200));
+
+const cio=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){
+    const el=e.target, end=+el.dataset.count, t0=performance.now(), dur=1300;
+    (function tick(now){const p=Math.min(1,(now-t0)/dur), v=Math.floor((1-Math.pow(1-p,3))*end);
+      el.textContent=v.toLocaleString('id-ID'); if(p<1)requestAnimationFrame(tick);})(t0);
+    cio.unobserve(el);
+  }});},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+const qio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){document.getElementById('qbar').style.width='66%';qio.unobserve(e.target);}});},{threshold:.5});
+qio.observe(document.getElementById('qbar'));
+
+/* ════════════════════════  JOURNEY SCROLL  ════════════════════════ */
+const steps=[...document.querySelectorAll('.step')];
+const sio=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){
+    steps.forEach(s=>s.classList.remove('active')); e.target.classList.add('active');
+    setJourney(+e.target.dataset.stage);
+  }});},{rootMargin:'-45% 0px -45% 0px',threshold:0});
+steps.forEach(s=>sio.observe(s));
+
+/* ════════════════════════  NAV + PROGRESS + MASCOT SCROLL-FOLLOW  ════════════════════════ */
+const nav=document.getElementById('nav'), prog=document.getElementById('progress');
+const jSec=document.getElementById('journey'), jFollow=document.getElementById('jFollow');
+const reduceMo=matchMedia('(prefers-reduced-motion:reduce)').matches;
+/* mascot glides vertically with scroll progress through the journey section */
+function journeyFollow(){
+  if(!jFollow||!jSec) return;
+  if(reduceMo||innerWidth<=880){ jFollow.style.transform=''; return; }
+  const r=jSec.getBoundingClientRect();
+  const total=r.height-innerHeight;            // distance the section stays pinned
+  if(total<=0){ jFollow.style.transform='translateY(0)'; return; }
+  const p=Math.min(1,Math.max(0,(-r.top)/total));   // 0 at section top → 1 at bottom
+  const y=(p-0.5)*innerHeight*0.34;                 // travel ±17vh as you scroll
+  jFollow.style.transform='translateY('+y.toFixed(1)+'px)';
+}
+let followTick=false;
+function onScroll(){
+  nav.classList.toggle('scrolled',scrollY>30);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(scrollY/h*100)+'%';
+  if(!followTick){ followTick=true; requestAnimationFrame(()=>{ journeyFollow(); followTick=false; }); }
+}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',journeyFollow);
+onScroll(); journeyFollow();
+
+/* ════════════════════════  PRICING  ════════════════════════ */
+const PRICE={monthly:{amt:'59rb',per:'pr_per_m',billed:'pr_billed_m'},annual:{amt:'39rb',per:'pr_per_m',billed:'pr_billed_a'},lifetime:{amt:'899rb',per:'pr_once',billed:'pr_billed_l'}};
+document.getElementById('cycle').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  document.querySelectorAll('#cycle button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  const c=b.dataset.cycle, p=PRICE[c];
+  const amt=document.getElementById('proAmt'); amt.style.opacity=0;
+  setTimeout(()=>{amt.textContent=p.amt; amt.style.opacity=1;},140);
+  document.getElementById('proPer').textContent=I18N[lang][p.per];
+  document.getElementById('proBilled').textContent=I18N[lang][p.billed];
+});
+
+/* ════════════════════════  CTA petals  ════════════════════════ */
+(function(){
+  const card=document.getElementById('ctaCard');
+  const pio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){spawnPetals(card);pio.disconnect();}});},{threshold:.4});
+  pio.observe(card);
+})();
+function spawnPetals(card){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const E=['🌸','🌿','✨','🌼'];
+  for(let i=0;i<16;i++){
+    const p=document.createElement('div'); p.className='petal'; p.textContent=E[i%4];
+    p.style.left=Math.random()*100+'%'; p.style.animationDuration=(5+Math.random()*5)+'s';
+    p.style.animationDelay=(Math.random()*6)+'s'; p.style.fontSize=(13+Math.random()*12)+'px';
+    card.appendChild(p);
+  }
+}
+
+/* ════════════════════════  I18N  ════════════════════════ */
+const I18N={
+id:{
+ nav_how:"Cara kerja",nav_features:"Fitur",nav_game:"Gamifikasi",nav_price:"Harga",nav_cta:"Mulai gratis",
+ hero_badge:"Teman siapin diri buat rekrutmen impianmu",
+ hero_h1a:"Tumbuh pelan-pelan,",hero_h1b:"sampai",hero_h1c:"siap hari seleksi.",
+ hero_lead:"Belajar terstruktur buat rekrutmen BUMN, Bank Indonesia, OJK, LPS & bank BUMN. Ditemani AI tutor, latihan soal tanpa batas, try out interview, sampai cek CV — semua di satu tempat.",
+ hero_cta1:"Mulai gratis",hero_cta2:"Lihat cara kerjanya",
+ hero_note:"Gratis buat mulai. <b>Tanpa kartu kredit.</b> Ditemani sampai hari-H.",
+ chip_streak:"Streak",chip_streak_n:"7 hari",scroll:"scroll",
+ marquee_label:"Siapin diri buat rekrutmen di institusi paling diburu di Indonesia",
+ prob_eyebrow:"Kenapa Rangkai",prob_h2:"Nyiapin rekrutmen sendirian itu… berat.",
+ prob_sub:"Materi berserakan, nggak tahu mulai dari mana, gampang nyerah. Rangkai bikin semuanya jadi satu jalur yang jelas — dan nemenin kamu di tiap langkah.",
+ prob_before_tag:"Tanpa Rangkai",prob_before_h:"Belajar sendirian",
+ prob_b1:"PDF & soal berserakan di mana-mana",prob_b2:"Bingung mulai dari mana & urutannya",prob_b3:"Nggak ada feedback, nggak tahu salah di mana",prob_b4:"Motivasi naik-turun, gampang nyerah",
+ prob_after_tag:"Sama Rangkai",prob_after_h:"Ditemani sampai mekar",
+ prob_a1:"Satu jalur terstruktur sesuai targetmu",prob_a2:"Pelan-pelan tiap hari, sesuai ritmemu",prob_a3:"Feedback instan dari AI tutor & try out",prob_a4:"XP, streak & quest bikin belajar nagih",
+ jr_eyebrow:"Perjalananmu",jr_h2:"Dari benih, jadi mekar.",jr_sub:"Scroll pelan-pelan — lihat dirimu tumbuh dari hari pertama sampai hari seleksi.",
+ jr_stage0:"Benih",jr_stage1:"Tunas",jr_stage2:"Kuncup",jr_stage3:"Mekar",
+ jr_s1_h:"Pilih jalurmu",jr_s1_p:"Mau ke Bank Indonesia, OJK, LPS, atau BUMN? Pilih satu (atau beberapa) target, dan Rangkai nyusun kurikulum yang pas sama latar belakangmu.",
+ jr_s2_h:"Belajar terstruktur",jr_s2_p:"Materi dipecah jadi fase → level → lesson kecil-kecil. Pelan-pelan tiap hari, sesuai waktu belajar yang kamu suka. Nggak ada lagi bingung mulai dari mana.",
+ jr_s3_h:"Latihan & try out",jr_s3_p:"Asah dengan latihan soal tanpa batas, tips santai lolos psikotes TWK, dan try out interview AI pakai STAR method. Dapat feedback langsung tiap selesai.",
+ jr_s4_h:"Mekar di hari seleksi",jr_s4_p:"CV udah dicek & dirapiin, latihan udah matang, mental udah siap. Kamu masuk ruang seleksi dengan percaya diri — mekar di saat yang tepat.",
+ feat_eyebrow:"Semua dalam satu app",feat_h2:"Semua yang kamu butuh buat lolos",feat_sub:"Bukan cuma kumpulan materi. Rangkai itu teman belajar lengkap yang ngerti targetmu.",
+ f1_h:"AI Tutor 24/7",f1_p:"Tanya apa aja, dijawab pelan-pelan sampai kamu paham. Kayak punya kakak tingkat yang sabar.",f1_q:"\"Tips santai lolos psikotes TWK\"",
+ f2_h:"Try Out Interview AI",f2_p:"Latihan wawancara skenario kerja nyata. Dapat skor & masukan biar makin pede.",f2_q:"\"Pakai STAR method, cerita pengalamanmu\"",
+ f3_h:"CV Checker otomatis",f3_p:"Unggah CV-mu, dapat skor & saran perbaikan yang jelas. Rapiin pelan-pelan.",f3_q:"\"CV kamu sudah kuat. Tinggal rapiin beberapa bagian.\"",
+ f4_h:"Latihan soal tanpa batas",f4_p:"Ribuan soal ala ujian asli — TWK, TIU, TKP, psikotes — lengkap dengan pembahasan.",
+ f5_h:"Perpustakaan PDF & video",f5_p:"Materi kurasi rapi buat tiap jalur. Belajar lewat baca atau nonton, sesukamu.",
+ f6_h:"Gamifikasi yang bikin nagih",f6_p:"XP, streak, daily quest & leaderboard. Belajar berat jadi kebiasaan kecil yang seru.",
+ nav_demos:"Demo",
+ feat_cta:"Coba gratis",
+ demos_eyebrow:"Lihat langsung",demos_h2:"Bukan cuma baca. Kamu beneran ngerjain.",demos_sub:"Soal interaktif, penalaran visual, dan AI tutor yang nemenin tiap langkah — ini cara belajar di Rangkai.",
+ d1_title:"AI Tutor",d1_online:"online",d1_ctx:"📐 Deret angka: 2, 6, 12, 20, ?",d1_user:"Kok jawabannya 30? 🤔",d1_ai:"Selisihnya naik +2 tiap langkah: 4, 6, 8, lalu 10. Jadi 20 + 10 = 30 🌱",d1_q1:"Kasih soal mirip",d1_q2:"Tips cepat",
+ d1_tag:"AI Tutor 24/7",d1_h:"Mentor yang nggak pernah capek dijelasin ulang",d1_p:"Stuck di satu soal? Tanya langsung. AI tutor Rangkai jelasin pelan-pelan, pakai contoh, sampai kamu beneran paham — bukan cuma kasih kunci jawaban.",d1_b1:"Jawaban langsung, nyambung sama soal yang lagi kamu kerjain",d1_b2:"Minta contoh mirip, tips cepat, atau alasan di balik jawaban",
+ d2_title:"Soal Interaktif",d2_tag:"Grafik",d2_correct:"Benar! +20 XP 🎉",d2_prompt:"Geser batang <b>Q4</b> sampai sesuai proyeksi penjualan.",d2_hint:"Geser batang ke atas-bawah buat atur nilainya",d2_check:"Cek jawaban",
+ d2_tag2:"Soal interaktif",d2_h:"Soal yang kamu sentuh, bukan cuma dibaca",d2_p:"Geser batang, tarik titik, atur irisan diagram. Belajar baca data jadi kerasa nyata — bukan lagi pilihan ganda yang gampang ketebak.",d2_b1:"Grafik batang, garis & lingkaran yang bisa kamu geser sendiri",d2_b2:"Feedback instan: benar, salah, plus pembahasannya",
+ d3_title:"Penalaran",d3_tag:"Logika",d3_done:"Mantap! Logikamu nyambung 🎉",d3_prompt:"Hubungkan simpul sesuai urutan logis yang benar.",d3_hint:"Ketuk simpul untuk mulai menghubungkan",
+ d3_tag2:"Penalaran visual",d3_h:"Latih logika TIU dengan cara yang nempel",d3_p:"Hubungkan simpul, urutkan kejadian, isi pola yang hilang. Penalaran jadi sesuatu yang kamu lihat dan rasain — bukan paragraf yang bikin pusing.",d3_b1:"Sambungkan urutan, susun logika, isi pola visual",d3_b2:"Pas buat TIU, psikotes & tes penalaran rekrutmen",
+ gam_eyebrow:"Bikin belajar nagih",gam_h2:"Konsistensi yang kerasa kayak main game",gam_sub:"Tiap lesson dapat XP. Tiap hari jaga streak. Tiap minggu naik leaderboard. Pelan-pelan, tapi nagih.",
+ gam_xp:"Total XP minggu ini",gam_streak:"Hari streak beruntun",gam_quest_t:"Quest hari ini",gam_quest_s:"Selesaikan buat jaga streak & kumpulin XP",
+ gam_q1:"Selesai 1 lesson",gam_q2:"Latihan 10 soal",gam_q3:"Ngobrol sama AI tutor",
+ gam_lb_t:"Leaderboard mingguan",gam_lb_s:"Liga Pucuk · sisa 2 hari",gam_lb_you:"Kamu",
+ gam_lb_role1:"Target: PCPM BI",gam_lb_role2:"Target: OJK",gam_lb_role3:"Target: LPS",gam_lb_role4:"Target: BUMN",gam_lb_role5:"Target: BRI",
+ pr_eyebrow:"Harga",pr_h2:"Mulai gratis. Upgrade kalau udah klik.",pr_sub:"Semua jalur, AI tutor, sama try out lengkap. Pelan-pelan, sampai kamu siap.",
+ pr_cyc_m:"Bulanan",pr_cyc_a:"Tahunan",pr_cyc_l:"Seumur hidup",
+ pr_free_n:"Gratis",pr_free_d:"Buat mulai tumbuh, tanpa biaya.",pr_forever:"selamanya",
+ pr_f1:"Akses jalur dasar",pr_f2:"latihan soal / hari",pr_f3:"chat AI tutor / hari",pr_f4:"XP, streak & leaderboard",pr_f5:"Try out interview & CV checker",
+ pr_free_cta:"Mulai gratis",pr_pop:"⭐ Paling populer",pr_pro_d:"Buka semuanya, ditemani sampai mekar.",
+ pr_per_m:"/bulan",pr_once:"sekali bayar",
+ pr_billed_m:"Ditagih bulanan · batal kapan aja",pr_billed_a:"Ditagih Rp468rb / tahun · hemat 34%",pr_billed_l:"Sekali bayar · akses selamanya",
+ pr_p1:"<b>Semua</b> path & level kebuka",pr_p2:"Latihan soal & AI tutor <b>tanpa batas</b>",pr_p3:"Try out interview AI",pr_p4:"CV checker otomatis",pr_p5:"Perpustakaan lengkap + progres detail",pr_p6:"streak freeze / bulan",
+ pr_pro_cta:"Coba Rangkai Pro",
+ cta_h2:"Yuk mulai pelan-pelan. Hari seleksimu nggak nunggu.",cta_p:"Gabung sekarang, gratis. Rangkai bakal nemenin kamu tumbuh dari benih sampai mekar di hari-H.",
+ cta_ph:"kamu@email.com",cta_btn:"Mulai gratis →",cta_fine:"Tanpa kartu kredit · Batal kapan aja · Ditemani sampai hari seleksi",
+ foot_tag:"Teman buat nyiapin diri menuju rekrutmen BUMN, BI, OJK, LPS, dan lainnya. Pelan-pelan, sampai kamu siap.",
+ foot_c1:"Produk",foot_c2:"Jalur",foot_c3:"Rangkai",foot_about:"Tentang",foot_login:"Masuk",foot_help:"Bantuan",foot_made:"Dibikin pelan-pelan",foot_rights:"Hak cipta dilindungi."
+},
+en:{
+ nav_how:"How it works",nav_features:"Features",nav_game:"Gamification",nav_price:"Pricing",nav_cta:"Start free",
+ hero_badge:"Your buddy for landing your dream public-sector job",
+ hero_h1a:"Grow a little every day,",hero_h1b:"until you're",hero_h1c:"ready for selection day.",
+ hero_lead:"Structured prep for Indonesia's toughest recruitment — BUMN, Bank Indonesia, OJK, LPS & state banks. With an AI tutor, unlimited practice, mock interviews, and CV checks, all in one place.",
+ hero_cta1:"Start free",hero_cta2:"See how it works",
+ hero_note:"Free to start. <b>No credit card.</b> With you till the big day.",
+ chip_streak:"Streak",chip_streak_n:"7 days",scroll:"scroll",
+ marquee_label:"Prep for Indonesia's most sought-after institutions",
+ prob_eyebrow:"Why Rangkai",prob_h2:"Preparing all alone is… exhausting.",
+ prob_sub:"Scattered materials, no idea where to start, easy to give up. Rangkai turns it all into one clear path — and walks every step with you.",
+ prob_before_tag:"Without Rangkai",prob_before_h:"Studying alone",
+ prob_b1:"PDFs & question banks scattered everywhere",prob_b2:"No idea where to start or in what order",prob_b3:"No feedback, no clue what you got wrong",prob_b4:"Motivation swings, easy to quit",
+ prob_after_tag:"With Rangkai",prob_after_h:"Accompanied till you bloom",
+ prob_a1:"One structured path tailored to your target",prob_a2:"Gently, every day, at your own pace",prob_a3:"Instant feedback from AI tutor & mock tests",prob_a4:"XP, streaks & quests make it addictive",
+ jr_eyebrow:"Your journey",jr_h2:"From a seed, into full bloom.",jr_sub:"Scroll slowly — watch yourself grow from day one to selection day.",
+ jr_stage0:"Seed",jr_stage1:"Sprout",jr_stage2:"Bud",jr_stage3:"Bloom",
+ jr_s1_h:"Pick your path",jr_s1_p:"Bank Indonesia, OJK, LPS or BUMN? Choose one (or several) targets, and Rangkai builds a curriculum that fits your background.",
+ jr_s2_h:"Learn, step by step",jr_s2_p:"Material broken into phases → levels → bite-size lessons. A little every day, around the study time you like. No more wondering where to begin.",
+ jr_s3_h:"Practice & mock tests",jr_s3_p:"Sharpen up with unlimited practice questions, easy tips to pass the TWK psych test, and AI mock interviews using the STAR method. Instant feedback every time.",
+ jr_s4_h:"Bloom on selection day",jr_s4_p:"CV checked & polished, practice locked in, mind ready. You walk into that room with confidence — blooming right on time.",
+ feat_eyebrow:"All in one app",feat_h2:"Everything you need to make it",feat_sub:"Not just a pile of materials. Rangkai is a complete study buddy that gets your target.",
+ f1_h:"24/7 AI Tutor",f1_p:"Ask anything, answered gently until it clicks. Like a patient senior who's been there.",f1_q:"\"Easy tips to pass the TWK psych test\"",
+ f2_h:"AI Mock Interview",f2_p:"Practice real on-the-job scenarios. Get a score and feedback to build confidence.",f2_q:"\"Use the STAR method, tell your story\"",
+ f3_h:"Automatic CV Checker",f3_p:"Upload your CV, get a score and clear suggestions. Polish it bit by bit.",f3_q:"\"Your CV is already strong. Just tidy a few sections.\"",
+ f4_h:"Unlimited practice",f4_p:"Thousands of exam-style questions — TWK, TIU, TKP, psych tests — each with full explanations.",
+ f5_h:"PDF & video library",f5_p:"Neatly curated material for every path. Learn by reading or watching, your choice.",
+ f6_h:"Gamification that hooks you",f6_p:"XP, streaks, daily quests & leaderboards. Hard study becomes a small, fun habit.",
+ nav_demos:"Demo",
+ feat_cta:"Try it free",
+ demos_eyebrow:"See it live",demos_h2:"Not just reading. You actually do it.",demos_sub:"Interactive questions, visual reasoning, and an AI tutor that walks every step — this is how you learn on Rangkai.",
+ d1_title:"AI Tutor",d1_online:"online",d1_ctx:"📐 Number series: 2, 6, 12, 20, ?",d1_user:"Why is the answer 30? 🤔",d1_ai:"The gaps grow by +2 each step: 4, 6, 8, then 10. So 20 + 10 = 30 🌱",d1_q1:"Give a similar one",d1_q2:"Quick tips",
+ d1_tag:"24/7 AI Tutor",d1_h:"A mentor that never tires of re-explaining",d1_p:"Stuck on a question? Just ask. Rangkai's AI tutor explains gently, with examples, until it actually clicks — not just handing you the answer key.",d1_b1:"Instant answers, tied to the exact question you're working on",d1_b2:"Ask for a similar example, quick tips, or the reasoning behind it",
+ d2_title:"Interactive Question",d2_tag:"Chart",d2_correct:"Correct! +20 XP 🎉",d2_prompt:"Drag bar <b>Q4</b> up to match the sales projection.",d2_hint:"Drag bars up and down to set their value",d2_check:"Check answer",
+ d2_tag2:"Interactive questions",d2_h:"Questions you touch, not just read",d2_p:"Drag bars, pull points, split a pie chart. Reading data becomes real — no more easy-to-guess multiple choice.",d2_b1:"Bar, line & pie charts you adjust with your own hands",d2_b2:"Instant feedback: right, wrong, plus the explanation",
+ d3_title:"Reasoning",d3_tag:"Logic",d3_done:"Nice! Your logic connects 🎉",d3_prompt:"Connect the nodes in the correct logical order.",d3_hint:"Tap a node to start connecting",
+ d3_tag2:"Visual reasoning",d3_h:"Train TIU logic in a way that sticks",d3_p:"Connect nodes, order events, fill the missing pattern. Reasoning becomes something you see and feel — not a paragraph that makes your head spin.",d3_b1:"Connect sequences, arrange logic, fill visual patterns",d3_b2:"Built for TIU, aptitude & recruitment reasoning tests",
+ gam_eyebrow:"Make study addictive",gam_h2:"Consistency that feels like a game",gam_sub:"Earn XP each lesson. Keep your streak daily. Climb the leaderboard weekly. Gently, but addictive.",
+ gam_xp:"Total XP this week",gam_streak:"Day streak in a row",gam_quest_t:"Today's quests",gam_quest_s:"Finish them to keep your streak & earn XP",
+ gam_q1:"Finish 1 lesson",gam_q2:"Practice 10 questions",gam_q3:"Chat with the AI tutor",
+ gam_lb_t:"Weekly leaderboard",gam_lb_s:"Sprout League · 2 days left",gam_lb_you:"You",
+ gam_lb_role1:"Target: PCPM BI",gam_lb_role2:"Target: OJK",gam_lb_role3:"Target: LPS",gam_lb_role4:"Target: BUMN",gam_lb_role5:"Target: BRI",
+ pr_eyebrow:"Pricing",pr_h2:"Start free. Upgrade once it clicks.",pr_sub:"Every path, the AI tutor, and full mock tests. Gently, until you're ready.",
+ pr_cyc_m:"Monthly",pr_cyc_a:"Yearly",pr_cyc_l:"Lifetime",
+ pr_free_n:"Free",pr_free_d:"To start growing, at no cost.",pr_forever:"forever",
+ pr_f1:"Access to starter paths",pr_f2:"practice questions / day",pr_f3:"AI tutor chats / day",pr_f4:"XP, streaks & leaderboard",pr_f5:"Mock interview & CV checker",
+ pr_free_cta:"Start free",pr_pop:"⭐ Most popular",pr_pro_d:"Unlock everything, till you bloom.",
+ pr_per_m:"/month",pr_once:"one-time",
+ pr_billed_m:"Billed monthly · cancel anytime",pr_billed_a:"Billed Rp468k / year · save 34%",pr_billed_l:"One-time · access forever",
+ pr_p1:"<b>All</b> paths & levels unlocked",pr_p2:"<b>Unlimited</b> practice & AI tutor",pr_p3:"AI mock interviews",pr_p4:"Automatic CV checker",pr_p5:"Full library + detailed progress",pr_p6:"streak freezes / month",
+ pr_pro_cta:"Try Rangkai Pro",
+ cta_h2:"Start gently, today. Selection day won't wait.",cta_p:"Join now, free. Rangkai will walk with you from a seed to full bloom on the big day.",
+ cta_ph:"you@email.com",cta_btn:"Start free →",cta_fine:"No credit card · Cancel anytime · With you till selection day",
+ foot_tag:"A buddy to prepare you for recruitment at BUMN, BI, OJK, LPS, and more. Gently, until you're ready.",
+ foot_c1:"Product",foot_c2:"Paths",foot_c3:"Rangkai",foot_about:"About",foot_login:"Log in",foot_help:"Help",foot_made:"Made gently",foot_rights:"All rights reserved."
+}};
+let lang='id';
+function applyLang(l){
+  lang=l; document.documentElement.lang=l;
+  const d=I18N[l];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; if(d[k]!=null) el.innerHTML=d[k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh; if(d[k]!=null) el.placeholder=d[k];});
+  document.querySelectorAll('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  // refresh dynamic bits
+  document.getElementById('growthLabel').textContent=d['jr_stage'+(curStage<0?0:curStage)];
+  const on=document.querySelector('#cycle button.on'); if(on){const p=PRICE[on.dataset.cycle];document.getElementById('proPer').textContent=d[p.per];document.getElementById('proBilled').textContent=d[p.billed];}
+}
+document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(b)applyLang(b.dataset.lang);});
+try{const saved=localStorage.getItem('rangkai-lang'); if(saved)applyLang(saved);}catch(e){}
+document.getElementById('lang').addEventListener('click',e=>{const b=e.target.closest('button');if(b){try{localStorage.setItem('rangkai-lang',b.dataset.lang);}catch(e){}}});
+
+/* initial journey render — placed last so I18N is initialized */
+setJourney(0);
+</script>
+</body>
+</html>

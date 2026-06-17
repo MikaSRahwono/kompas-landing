@@ -1,0 +1,30 @@
+<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Victory">
+  <defs>
+    <linearGradient id="bd_22trophy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient>
+    <linearGradient id="fc_22trophy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient>
+    <linearGradient id="lf_22trophy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient>
+  </defs>
+  <ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/>
+  
+  <g transform="">
+    <path d="M120 78 C 118 55, 122 45.800000000000004, 120 32" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 32)">
+  <path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_22trophy)"/>
+  <path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_22trophy)"/>
+  <path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/>
+  <path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g>
+    <rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_22trophy)"/>
+    <ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/>
+    <ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/>
+    <rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_22trophy)"/>
+    <ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/>
+    <ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/>
+    
+    <path d="M92 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L92 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M148 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L148 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/>
+    <path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/>
+    
+    <path d="M54 150 L88 182" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="88" cy="182" r="9" fill="#118a58"/><path d="M186 150 L152 182" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="152" cy="182" r="9" fill="#118a58"/>
+  </g>
+  <g transform="translate(120 184)"><path d="M-15 -18 H15 L13 -2 Q0 9 -13 -2 Z" fill="#f2c14e" stroke="#e0a93b" stroke-width="2" stroke-linejoin="round"/><path d="M-15 -14 Q-28 -13 -23 2 Q-19 9 -12 7" fill="none" stroke="#e0a93b" stroke-width="3"/><path d="M15 -14 Q28 -13 23 2 Q19 9 12 7" fill="none" stroke="#e0a93b" stroke-width="3"/><rect x="-4" y="0" width="8" height="11" fill="#e0a93b"/><rect x="-13" y="11" width="26" height="6" rx="2" fill="#e0a93b"/><path d="M0 -14 l2.2 5 5.4 .5 -4 3.6 1.3 5.3 -4.9 -3 -4.9 3 1.3 -5.3 -4 -3.6 5.4 -.5z" fill="#fff" opacity=".85"/></g><path d="M40 132.3 L42.2 137.8 L47.7 140 L42.2 142.2 L40 147.7 L37.8 142.2 L32.3 140 L37.8 137.8 Z" fill="#f2c14e"/><path d="M202 132.3 L204.2 137.8 L209.7 140 L204.2 142.2 L202 147.7 L199.8 142.2 L194.3 140 L199.8 137.8 Z" fill="#f2c14e"/><path d="M120 -22.3 L121.8 -17.8 L126.3 -16 L121.8 -14.2 L120 -9.7 L118.2 -14.2 L113.7 -16 L118.2 -17.8 Z" fill="#f2c14e"/>
+</svg>

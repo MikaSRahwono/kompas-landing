@@ -1,0 +1,30 @@
+<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Love">
+  <defs>
+    <linearGradient id="bd_08love" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient>
+    <linearGradient id="fc_08love" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient>
+    <linearGradient id="lf_08love" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient>
+  </defs>
+  <ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/>
+  
+  <g transform="">
+    <path d="M120 78 C 118 63, 122 57, 120 48" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 48)">
+  <path d="M0 0 C -26 -10, -30 -34, -2 -30 C -6 -14, -4 -6, 0 0Z" fill="url(#lf_08love)"/>
+  <path d="M0 0 C 26 -10, 30 -34, 2 -30 C 6 -14, 4 -6, 0 0Z" fill="url(#lf_08love)"/>
+  <path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/>
+  <path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g>
+    <rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_08love)"/>
+    <ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/>
+    <ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/>
+    <rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_08love)"/>
+    <ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/>
+    <ellipse cx="82" cy="151" rx="11" ry="7" fill="#f0a6c2" opacity=".82"/><ellipse cx="158" cy="151" rx="11" ry="7" fill="#f0a6c2" opacity=".82"/>
+    
+    <path d="M92 142.4 C 74 125.6, 74 106.4, 92 119.6 C 110 106.4, 110 125.6, 92 142.4 Z" fill="#ef6aa0"/><circle cx="88" cy="124" r="1.8" fill="#fff" opacity=".9"/><path d="M148 142.4 C 130 125.6, 130 106.4, 148 119.6 C 166 106.4, 166 125.6, 148 142.4 Z" fill="#ef6aa0"/><circle cx="144" cy="124" r="1.8" fill="#fff" opacity=".9"/>
+    <path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/>
+    
+    <path d="M54 150 L40 130" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="130" r="9" fill="#118a58"/><path d="M186 150 L200 130" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="130" r="9" fill="#118a58"/>
+  </g>
+  <path d="M40 55.6 C 20.5 37.4, 20.5 16.599999999999998, 40 30.9 C 59.5 16.599999999999998, 59.5 37.4, 40 55.6 Z" fill="#ef6aa0"/><path d="M206 66 C 191 52, 191 36, 206 47 C 221 36, 221 52, 206 66 Z" fill="#ef6aa0"/><path d="M120 -5.800000000000001 C 107.25 -17.7, 107.25 -31.299999999999997, 120 -21.95 C 132.75 -31.299999999999997, 132.75 -17.7, 120 -5.800000000000001 Z" fill="#ef6aa0" opacity=".9"/><path d="M72 26.4 C 61.5 16.6, 61.5 5.4, 72 13.100000000000001 C 82.5 5.4, 82.5 16.6, 72 26.4 Z" fill="#f6a8c6"/>
+</svg>

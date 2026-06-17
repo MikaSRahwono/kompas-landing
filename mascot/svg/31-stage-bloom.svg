@@ -1,0 +1,30 @@
+<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Stage 4 · Bloom">
+  <defs>
+    <linearGradient id="bd_31stagebloom" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient>
+    <linearGradient id="fc_31stagebloom" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient>
+    <linearGradient id="lf_31stagebloom" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient>
+  </defs>
+  <ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/>
+  
+  <g transform="">
+    <path d="M120 78 C 118 58, 122 50, 120 38" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 58)">
+  <path d="M0 0 C -24.7 -9.5, -28.5 -32.3, -2 -28.5 C -5.699999999999999 -13.299999999999999, -3.8 -6, 0 0Z" fill="url(#lf_31stagebloom)"/>
+  <path d="M0 0 C 24.7 -9.5, 28.5 -32.3, 2 -28.5 C 5.699999999999999 -13.299999999999999, 3.8 -6, 0 0Z" fill="url(#lf_31stagebloom)"/>
+  <path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/>
+  <path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><g><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(0 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(72 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(144 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(216 120 36)"/><ellipse cx="120" cy="14" rx="11" ry="18" fill="#fff" transform="rotate(288 120 36)"/><circle cx="120" cy="36" r="10" fill="#f2c14e"/><circle cx="120" cy="36" r="5" fill="#e0a93b"/></g>
+    <rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_31stagebloom)"/>
+    <ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/>
+    <ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/>
+    <rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_31stagebloom)"/>
+    <ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/>
+    <ellipse cx="82" cy="151" rx="11" ry="7" fill="#f0a6c2" opacity=".82"/><ellipse cx="158" cy="151" rx="11" ry="7" fill="#f0a6c2" opacity=".82"/>
+    
+    <path d="M92 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L92 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/><path d="M148 118 l3.8 8.8 8.8 3.8 -8.8 3.8 L148 142 l-3.8 -8.8 -8.8 -3.8 8.8 -3.8 z" fill="#a32a7d"/>
+    <path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/>
+    
+    <path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/>
+  </g>
+  <path d="M150 23 L152 28 L157 30 L152 32 L150 37 L148 32 L143 30 L148 28 Z" fill="#f2c14e"/><path d="M92 28.4 L93.6 32.4 L97.6 34 L93.6 35.6 L92 39.6 L90.4 35.6 L86.4 34 L90.4 32.4 Z" fill="#fff"/><path d="M120 -20.3 L121.8 -15.8 L126.3 -14 L121.8 -12.2 L120 -7.7 L118.2 -12.2 L113.7 -14 L118.2 -15.8 Z" fill="#f2c14e"/>
+</svg>

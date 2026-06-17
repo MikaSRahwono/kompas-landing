@@ -1,0 +1,31 @@
+<svg viewBox="-30 -28 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rangkai mascot — Stage 3 · Bud">
+  <defs>
+    <linearGradient id="bd_30stagebud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34c98b"/><stop offset="1" stop-color="#118a58"/></linearGradient>
+    <linearGradient id="fc_30stagebud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4fdf8"/><stop offset="1" stop-color="#dcf3e6"/></linearGradient>
+    <linearGradient id="lf_30stagebud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fce8f"/><stop offset="1" stop-color="#1f9e69"/></linearGradient>
+  </defs>
+  <ellipse cx="120" cy="244" rx="58" ry="9" fill="rgba(14,40,28,.13)"/>
+  
+  <g transform="">
+    <path d="M120 78 C 118 55, 122 45.800000000000004, 120 32" stroke="#1f9e69" stroke-width="6" fill="none" stroke-linecap="round"/><g transform="translate(120 60)">
+  <path d="M0 0 C -23.400000000000002 -9, -27 -30.6, -2 -27 C -5.4 -12.6, -3.6 -6, 0 0Z" fill="url(#lf_30stagebud)"/>
+  <path d="M0 0 C 23.400000000000002 -9, 27 -30.6, 2 -27 C 5.4 -12.6, 3.6 -6, 0 0Z" fill="url(#lf_30stagebud)"/>
+  <path d="M-2 -4 C -8 -14, -12 -20, -16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/>
+  <path d="M2 -4 C 8 -14, 12 -20, 16 -24" stroke="#1f9e69" stroke-width="1.6" fill="none" opacity=".5"/></g><g transform="translate(120 30)"><ellipse cx="0" cy="0" rx="11" ry="16" fill="#e58fb6"/><ellipse cx="0" cy="-2" rx="6" ry="11" fill="#f2a9c8"/></g>
+    <rect x="98" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="127" y="196" width="15" height="26" rx="7.5" fill="#118a58"/>
+    <rect x="46" y="72" width="148" height="140" rx="60" fill="url(#bd_30stagebud)"/>
+    <ellipse cx="120" cy="80" rx="22" ry="9" fill="#0c4733"/>
+    <ellipse cx="120" cy="79" rx="16" ry="6" fill="#093a29"/>
+    <rect x="66" y="98" width="108" height="92" rx="42" fill="url(#fc_30stagebud)"/>
+    <ellipse cx="86" cy="112" rx="9" ry="5" fill="#fff" opacity=".55"/>
+    <ellipse cx="84" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/><ellipse cx="156" cy="150" rx="9" ry="6" fill="#f0a6c2" opacity=".55"/>
+    
+    <rect x="84" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="89" cy="124" r="3.6" fill="#fff"/>
+  <rect x="139" y="116" width="17" height="28" rx="8.5" fill="#a32a7d"/><circle cx="144" cy="124" r="3.6" fill="#fff"/>
+    <path d="M108 150 q12 16 24 0 z" fill="#7a1e5c"/><path d="M113 157 q7 6 14 0" fill="#ff8fb0"/>
+    
+    <path d="M52 150 L40 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="40" cy="178" r="9" fill="#118a58"/><path d="M188 150 L200 178" stroke="#118a58" stroke-width="12" stroke-linecap="round"/><circle cx="200" cy="178" r="9" fill="#118a58"/>
+  </g>
+  <path d="M150 34.4 L151.6 38.4 L155.6 40 L151.6 41.6 L150 45.6 L148.4 41.6 L144.4 40 L148.4 38.4 Z" fill="#f2a9c8"/>
+</svg>
